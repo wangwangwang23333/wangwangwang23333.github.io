@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>四种平衡二叉树 | 欢迎来到www的网站</title><meta name="author" content="www"><meta name="copyright" content="www"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="速来学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四种平衡二叉树">
+<meta property="og:url" content="http://wangwangwang.website/2021/01/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BA%E6%96%87/index.html">
+<meta property="og:site_name" content="欢迎来到www的网站">
+<meta property="og:description" content="速来学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.ax1x.com/2021/01/06/sZE6yD.png">
+<meta property="article:published_time" content="2021-01-06T14:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-06T14:40:01.541Z">
+<meta property="article:author" content="www">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/01/06/sZE6yD.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangwangwang.website/2021/01/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BA%E6%96%87/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-06 22:40:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div></div><hr/></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s3.ax1x.com/2021/01/06/sZE6yD.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">欢迎来到www的网站</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">四种平衡二叉树</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-06T14:00:00.000Z" title="发表于 2021-01-06 22:00:00">2021-01-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-06T14:40:01.541Z" title="更新于 2021-01-06 22:40:01">2021-01-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>二叉树（Binary Tree）指的是树中结点的度不大于2的有序树，其递归定义是：二叉树是一棵空树，或者是一棵由一个根节点和两棵互不相交的，分别称作根的左子树和右子树组成的非空树；左子树和右子树同样也是二叉树。</p>
+<p>二叉树是树形结构的一个重要类型，许多实际问题抽象出来的数据结构往往都是二叉树的类型。即使是一般的树也可以转化为二叉树，并且二叉树的存储结构和算法相对而言都比较简单。因此研究二叉树对于研究数据结构有着重要的意义。</p>
+<p>基于二叉树在数据结构中的重要作用，本篇文章中将探讨二叉树的一个重要应用，即作为二叉搜索树时能够发挥的作用。同时，本文也进一步探讨研究了较常使用的平衡二叉树和六种不同的平衡二叉树的性能并对其做了对比分析，为未来计算机应用提供了可供参考的意见。</p>
+<h1 id="1-二叉搜索树"><a href="#1-二叉搜索树" class="headerlink" title="1  二叉搜索树"></a><strong>1</strong>  <strong>二叉搜索树</strong></h1><h2 id="1-1-二叉搜索树（BST）"><a href="#1-1-二叉搜索树（BST）" class="headerlink" title="1.1  二叉搜索树（BST）"></a><strong>1.1</strong>  二叉搜索树（BST）</h2><p>二叉搜索树（Binary Search Tree）又称二叉查找树或二叉排序树。作为一种经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势。</p>
+<p>二叉搜索树的定义也是递归的。它是一棵空树，或者是满足下列性质的二叉树：</p>
+<ol>
+<li>每个结点都有一个作为搜索依据的关键码（key），所有节点的关键码互不相同；</li>
+<li>左子树（如果存在）上所有结点的关键码都小于根；</li>
+<li>右子树（如果存在）上所有结点的关键码都大于根；</li>
+<li>左子树和右子树也是一棵二叉搜索树。</li>
+</ol>
+<p>如下图所示，就是一棵标准的二叉搜索树：</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZAigU"><img src="https://s3.ax1x.com/2021/01/06/sZAigU.png" alt="sZAigU.png"></a></p>
+<h3 id="1-1-1-搜索"><a href="#1-1-1-搜索" class="headerlink" title="1.1.1 搜索"></a>1.1.1 搜索</h3><p>二叉树的搜索是一个递归的过程，流程图如下所示：</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZAeER"><img src="https://s3.ax1x.com/2021/01/06/sZAeER.png" alt="sZAeER.png"></a></p>
+<p>从树根出发，逐步的缩小查找范围，直到发现目标（成功）或者缩小至空结点（失败）。对于该过程而言，在二叉搜索树的每一层，查找算法至多访问一个结点，并且只需要常数时间。因此，总体所需时间应当线性正比于查找路径的长度，或最终返回结点的深度。对于规模为n的二叉搜索树，深度在最坏情况下可达(n)。</p>
+<h3 id="1-1-2-插入"><a href="#1-1-2-插入" class="headerlink" title="1.1.2 插入"></a>1.1.2 插入</h3><p> 二叉搜索树的插入的流程图如下所示：</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZAEDJ"><img src="https://s3.ax1x.com/2021/01/06/sZAEDJ.png" alt="sZAEDJ.png"></a></p>
+<p>为了在二叉搜索树中插入一个结点，首先需要利用其搜索操作查找到插入的位置，然后再将新结点作为叶子结点插入（或者更新已存在结点的值）。由于该操作依赖于搜索操作，因此时间复杂度也为O(n)。</p>
+<h3 id="1-1-3-删除"><a href="#1-1-3-删除" class="headerlink" title="1.1.3 删除"></a>1.1.3 删除</h3><p>二叉搜索树的删除的流程图如下所示：</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZAVb9"><img src="https://s3.ax1x.com/2021/01/06/sZAVb9.png" alt="sZAVb9.png"></a></p>
+<p>二叉搜索树的删除过程也依赖于其查找过程，故时间复杂度也为O(n)。</p>
+<h2 id="1-2-平衡二叉搜索树（BBST）"><a href="#1-2-平衡二叉搜索树（BBST）" class="headerlink" title="1.2  平衡二叉搜索树（BBST）"></a><strong>1.2</strong>  平衡二叉搜索树（BBST）</h2><p>由于二叉搜索树在最坏情况下可能退化为列表，此时的各种效率降至O(n)。因此如果不能有效的控制树高，二叉搜索树无法体现出明显的优势。因此，需要依照某种宽松的标准，重新定义二叉搜索树的平衡性。</p>
+<p>平衡二叉搜索树（Balanced Binary Search Tree）指的是在某种约束条件下，树高渐进地不超过O(logN)。在这一约束条件下，各种操作的时间复杂度即可降低为O(logN)。它为每一个结点v的平衡因子（balance factor）定义为左、右子树的高度差，即</p>
+<p> <strong>balFac(v) = height(lc(v)) - height(rc(v))</strong></p>
+<p>下图即为定义了平衡因子的二叉搜索树：</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZArrQ"><img src="https://s3.ax1x.com/2021/01/06/sZArrQ.png" alt="sZArrQ.png"></a></p>
+<p>通过设定这种约束条件，即可达到搜索树的最佳性能。后续将介绍六种二叉搜索树。</p>
+<h1 id="2-六种平衡二叉搜索树"><a href="#2-六种平衡二叉搜索树" class="headerlink" title="2 六种平衡二叉搜索树"></a><strong>2</strong> <strong>六种平衡二叉搜索树</strong></h1><h2 id="2-1-高度平衡树（AVL）"><a href="#2-1-高度平衡树（AVL）" class="headerlink" title="2.1 高度平衡树（AVL）"></a><strong>2.1</strong> <strong>高度平衡树（AVL</strong>）</h2><p>AVL是最早发明自平衡二叉树，它被称作高度平衡树。在ALV树中，任意结点平衡因子的绝对值不超过1，即：</p>
+<p> <strong>|balFac(v)|≤1</strong></p>
+<h3 id="2-1-1-平衡性"><a href="#2-1-1-平衡性" class="headerlink" title="2.1.1 平衡性"></a>2.1.1 平衡性</h3><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZAhxU"><img src="https://s3.ax1x.com/2021/01/06/sZAhxU.png" alt="sZAhxU.png"></a></p>
+<p>如上图所示，不妨设结点数最少的AVL树S的根结点为r，r的左、右子树分别为lc和rc，记规模为|lc|和|rc|，高度为h_l和h_r，则有：<br>|S|=1+|lc|+|rc|<br>由于S的子树lc和rc也是AVL树，并且高度不超过h-1。因此，不妨取：<br>h_l=h-1, h_r=h-2,<br>|S|=1+| S_(h-1) |+| S_(h-2) |,<br>由归纳假设，可以获得如下关系：<br>|S|=1+(fib(h+2)-1)+(fib(h+1)-1)<br>而根据Fibonacci数列的定义，可以获得：<br>|S|=fib(h+2)+fib(h+1)-1=fib(h+3)-1<br>因此，可以知道：高度为h的AVL树至少包含fib(h+3)-1个结点。由于fib(h)和n次方正比，于是包含n个结点的AVL树的高度应为O(log⁡n )。<br>综上可知，AVL树的确是平衡的。</p>
+<h3 id="2-1-2-旋转"><a href="#2-1-2-旋转" class="headerlink" title="2.1.2 旋转"></a>2.1.2 旋转</h3><p>AVL树的插入过程和一般二叉搜索树的过程相同，即：从树根出发，逐步的缩小查找范围，直到发现目标（成功）或者缩小至空结点（失败）。</p>
+<p>不同之处在于，二叉树在插入或者删除时，需要维持其平衡。而维持平衡这一过程，正是通过旋转（Rotate）操作来实现的。AVL树的旋转可以归纳为四种：LL单右旋、RR单左旋、LR先左旋再右旋和RL先右旋再左旋。</p>
+<ul>
+<li>LL单右旋：当失衡位置发生在失衡结点左子树的左子树时，需要进行LL单右旋。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZAIr4"><img src="https://s3.ax1x.com/2021/01/06/sZAIr4.png" alt="sZAIr4.png"></a></p>
+<ul>
+<li>RR单左旋：当失衡位置发生在失衡结点右子树的右子树时，需要进行RR单左旋。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZAjxO"><img src="https://s3.ax1x.com/2021/01/06/sZAjxO.png" alt="sZAjxO.png"></a></p>
+<ul>
+<li>LR先左旋再右旋：当失衡位置发生在失衡结点左子树的右子树时，需要进行LR先左旋再右旋。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZESqH"><img src="https://s3.ax1x.com/2021/01/06/sZESqH.png" alt="sZESqH.png"></a></p>
+<ul>
+<li>RL先右旋再左旋：当失衡位置发生在失衡结点右子树的左子树时，需要进行RL先右旋再左旋。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZEFit"><img src="https://s3.ax1x.com/2021/01/06/sZEFit.png" alt="sZEFit.png"></a></p>
+<h3 id="2-1-3-性能分析"><a href="#2-1-3-性能分析" class="headerlink" title="2.1.3 性能分析"></a>2.1.3 性能分析</h3><p>通过2.1.2的旋转操作，AVL树可以满足其性质的定义，通过2.1.1证明可知：包含n个结点的AVL树的高度应为logn 。</p>
+<p>由于二叉搜索树的查找操作时间正比于树高，因此AVL树查找的时间复杂度为O(logN) 。同理，插入和删除的时间复杂度也为(logN)。</p>
+<h2 id="2-2-伸展树（ST）"><a href="#2-2-伸展树（ST）" class="headerlink" title="2.2 伸展树（ST）"></a><strong>2.2</strong> <strong>伸展树（ST</strong>）</h2><p>伸展树（Splay Tree）也叫分裂树，相对于AVL树实现更为简捷。伸展树无需时刻都严格地保持全树的平衡，但却能够在任何足够长的真实操作序列中，保持分摊意义上的高效率。伸展树也不需要对基本的二叉树节点结构，做任何附加的要求或改动，更不需要记录平衡因子或高度之类的额外信息，故适用范围更广。</p>
+<p>每次查找节点之后对树进行重构，把被查找的节点搬移到树根。每次对伸展树进行操作后，它均会通过伸展（Splay）的方法使得被访问结点置于根结点的位置。</p>
+<h3 id="2-2-1-伸展"><a href="#2-2-1-伸展" class="headerlink" title="2.2.1 伸展"></a>2.2.1 伸展</h3><p>与普通的二叉搜索树的区别在于，伸展树通过伸展操作将元素调整至根结点的位置。这一调整根据结点所在位置的不同，采用不同的调整方法：</p>
+<table>
+<thead>
+<tr>
+<th align="center">情形</th>
+<th align="center">旋转方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单R型</td>
+<td align="center">左旋转</td>
+</tr>
+<tr>
+<td align="center">单L型</td>
+<td align="center">右旋转</td>
+</tr>
+<tr>
+<td align="center">RR型</td>
+<td align="center">两次左旋转</td>
+</tr>
+<tr>
+<td align="center">LL型</td>
+<td align="center">两次右旋转</td>
+</tr>
+<tr>
+<td align="center">RL型</td>
+<td align="center">先右旋转再左旋转</td>
+</tr>
+<tr>
+<td align="center">LR型</td>
+<td align="center">先左旋转再右旋转</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-2-性能分析"><a href="#2-2-2-性能分析" class="headerlink" title="2.2.2 性能分析"></a>2.2.2 性能分析</h3><p>伸展树能够在O(log⁡n)内完成插入、查找和删除操作。它在不保证最坏情况下的时间复杂度是O(log⁡n)，其边界是均摊的。但是，它有一个最显著的缺点，即有可能变成一条链，这种情况下时间复杂度高达O(n)。</p>
+<h2 id="2-3-红黑树（RBT）"><a href="#2-3-红黑树（RBT）" class="headerlink" title="2.3 红黑树（RBT）"></a><strong>2.3</strong> <strong>红黑树（RBT</strong>）</h2><p>红黑树（Red Black Tree）是一种自平衡二叉搜索树，它等价于4阶B-树。它实际上是一种特化的AVL，均是在进行插入和删除操作时通过特定操作保持二叉搜索树的平衡，从而获得了较高的查找性能。</p>
+<p>红黑树保持适度平衡的关键在于：任一结点左、右子树的高度，相差不得超过两倍。为了保持这一平衡，红黑树为其内部的每一个结点定义了颜色属性黑色或者红色（本文章中红黑树黑底表示黑色结点，白底表示红色结点）。</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZEliq"><img src="https://s3.ax1x.com/2021/01/06/sZEliq.png" alt="sZEliq.png"></a></p>
+<p>与上述二叉搜索树不同，红黑树引入了外部结点作为叶结点（图11中的黑色矩形即为叶结点），它满足下述性质：</p>
+<ol>
+<li>每个结点要么是黑色，要么是红色；</li>
+<li>根结点是黑色的；</li>
+<li>每个叶结点（NIL）是黑色的；</li>
+<li>每个红色结点的两个子结点一定都是黑色的；</li>
+<li>任意一个结点到每个叶结点的路径都包含相同数量的黑色结点。</li>
+</ol>
+<p>事实上，正是由于性质（5），红黑树的这种平衡被称作黑色完美平衡。红黑树维持平衡主要依靠三种方法：左旋、右旋和染色（结点的颜色由黑变红或者由红变黑）。</p>
+<h3 id="2-3-1-平衡性"><a href="#2-3-1-平衡性" class="headerlink" title="2.3.1 平衡性"></a>2.3.1 平衡性</h3><p>略</p>
+<h3 id="2-3-2-三种操作"><a href="#2-3-2-三种操作" class="headerlink" title="2.3.2 三种操作"></a>2.3.2 三种操作</h3><p>由于红黑树是一棵二叉搜索树，并且查找并不会破坏树的平衡，因此查找和二叉搜索树的查找无异，是一个递归的过程。</p>
+<p>红黑树的插入过程分为两步，第一步是查找到插入位置，第二步则是插入后的自平衡。因此，其插入过程可分为下述情况（如图11所示）：</p>
+<ol>
+<li><p>红黑树为空树：将插入的结点作为根结点，并且染色为黑色；</p>
+</li>
+<li><p>插入结点的父结点为黑色结点：直接插入即可；</p>
+</li>
+<li><p>插入结点的父结点为红色结点：</p>
+<p>若叔叔结点存在并且为红色结点，则只需将P和S设置为黑色，PP设置为红色，接下来递归的处理PP结点即可；</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZEJQU"><img src="https://s3.ax1x.com/2021/01/06/sZEJQU.png" alt="sZEJQU.png"></a></p>
+<p>若叔叔结点不存在或者为黑色结点，插入结点是父结点的左子结点，父结点是祖先结点的左子结点。该种情况需要将P设为黑色，PP设为红色，同时对PP进行右旋，如下图所示。其余情况实际为该种情况的对称形式，在此不再赘述。</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZEYyF"><img src="https://s3.ax1x.com/2021/01/06/sZEYyF.png" alt="sZEYyF.png"></a></p>
+</li>
+</ol>
+<p>红黑树的删除过程也是先查找到删除位置，然后通过旋转和染色来实现再次平衡。</p>
+<h2 id="2-4-替罪羊树（ST）"><a href="#2-4-替罪羊树（ST）" class="headerlink" title="2.4 替罪羊树（ST）"></a><strong>2.4</strong> <strong>替罪羊树（ST</strong>）</h2><p>替罪羊树（Scapegoat Tree）不同于上述通过旋转来维持相对平衡的二叉搜索树，它是基于一种暴力重构的操作来保持相对平衡的。</p>
+<h3 id="2-4-1-平衡因子"><a href="#2-4-1-平衡因子" class="headerlink" title="2.4.1 平衡因子"></a>2.4.1 平衡因子</h3><p>替罪羊树中定义了一个平衡因子α的概念，范围在0.5到1之间。当某个结点的总结点数* α &lt;它某个子树的总结点数，便会对该结点执行重构操作。<br>对于α的取值，如果α越小，那么对平衡的要求越高，重构的次数会更多；α越大，树的平衡程度越低，重构的次数也会随之减少。一般而言，α取0.7左右比较合适。</p>
+<h3 id="2-4-2-平衡性"><a href="#2-4-2-平衡性" class="headerlink" title="2.4.2 平衡性"></a>2.4.2 平衡性</h3><p>略</p>
+<h3 id="2-4-3-重构"><a href="#2-4-3-重构" class="headerlink" title="2.4.3 重构"></a>2.4.3 重构</h3><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZEaw9"><img src="https://s3.ax1x.com/2021/01/06/sZEaw9.png" alt="sZEaw9.png"></a></p>
+<p>如上图所示的替罪羊树，若平衡因子  ，则结点v已发生失衡。重构过程如下：</p>
+<ol>
+<li>将这棵树压扁，存入向量中：</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZEsSK"><img src="https://s3.ax1x.com/2021/01/06/sZEsSK.png" alt="sZEsSK.png"></a></p>
+<p>​    2.重新建树：每次取区间中点作为根结点，递归左右两边子树建树：</p>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/sZE6yD"><img src="https://s3.ax1x.com/2021/01/06/sZE6yD.md.png" alt="sZE6yD.md.png"></a></p>
+<p>通过上述操作，替罪羊树即完成了其重构操作。并且由2.4.2中结论可知，每次插入后的重构仍然能保证替罪羊树各种操作的时间复杂度达到  。</p>
+<h1 id="3-平衡搜索树的性能对比"><a href="#3-平衡搜索树的性能对比" class="headerlink" title="3 平衡搜索树的性能对比"></a><strong>3</strong> <strong>平衡搜索树的性能对比</strong></h1><p>根据上述介绍可以看出，AVL、伸展树、红黑树和替罪羊树分别采取了不同的方法实现了相对平衡，复杂度如表2所示。在实际使用时，应当根据工作情景选用：</p>
+<table>
+<thead>
+<tr>
+<th align="center">平衡树</th>
+<th align="center">时间复杂度</th>
+<th align="center">应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">AVL</td>
+<td align="center">O(log n)</td>
+<td align="center">最早的平衡树</td>
+</tr>
+<tr>
+<td align="center">伸展树</td>
+<td align="center">均摊O(log n)</td>
+<td align="center">对区间操作</td>
+</tr>
+<tr>
+<td align="center">红黑树</td>
+<td align="center">O(log n)</td>
+<td align="center">综合效率最高</td>
+</tr>
+<tr>
+<td align="center">替罪羊树</td>
+<td align="center">O(log n)</td>
+<td align="center">实现较易</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">www</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wangwangwang.website/2021/01/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BA%E6%96%87/">http://wangwangwang.website/2021/01/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BA%E6%96%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wangwangwang.website" target="_blank">欢迎来到www的网站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2021/01/06/sZE6yD.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/01/11/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%A4%8D%E4%B9%A0/"><img class="prev-cover" src="https://s3.ax1x.com/2021/01/11/s8GD8H.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">离散数学复习</div></div></a></div><div class="next-post pull-right"><a href="/2021/01/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0/"><img class="next-cover" src="https://s3.ax1x.com/2021/01/05/sk0Own.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据结构总复习（1）——数组、链表、队列、栈和稀疏矩阵</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">www</div><div class="author-info__description">当你一觉醒来，我就在那银河外面远航</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangwangwang23333"><i class="fab fa-github"></i><span>关注我吧</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">1  二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%88BST%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.1  二叉搜索树（BST）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E6%90%9C%E7%B4%A2"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1 搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E6%8F%92%E5%85%A5"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2 插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E5%88%A0%E9%99%A4"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.1.3 删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%88BBST%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">1.2  平衡二叉搜索树（BBST）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%85%AD%E7%A7%8D%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">2 六种平衡二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E9%AB%98%E5%BA%A6%E5%B9%B3%E8%A1%A1%E6%A0%91%EF%BC%88AVL%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 高度平衡树（AVL）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E5%B9%B3%E8%A1%A1%E6%80%A7"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 平衡性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-%E6%97%8B%E8%BD%AC"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.1.3 性能分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BC%B8%E5%B1%95%E6%A0%91%EF%BC%88ST%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 伸展树（ST）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E4%BC%B8%E5%B1%95"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 伸展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 性能分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E7%BA%A2%E9%BB%91%E6%A0%91%EF%BC%88RBT%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 红黑树（RBT）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E5%B9%B3%E8%A1%A1%E6%80%A7"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 平衡性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E4%B8%89%E7%A7%8D%E6%93%8D%E4%BD%9C"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 三种操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E6%9B%BF%E7%BD%AA%E7%BE%8A%E6%A0%91%EF%BC%88ST%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 替罪羊树（ST）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-%E5%B9%B3%E8%A1%A1%E5%9B%A0%E5%AD%90"><span class="toc-number">2.4.1.</span> <span class="toc-text">2.4.1 平衡因子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-%E5%B9%B3%E8%A1%A1%E6%80%A7"><span class="toc-number">2.4.2.</span> <span class="toc-text">2.4.2 平衡性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-%E9%87%8D%E6%9E%84"><span class="toc-number">2.4.3.</span> <span class="toc-text">2.4.3 重构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%B9%B3%E8%A1%A1%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">3 平衡搜索树的性能对比</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/19/%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" title="前端--节流与防抖"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端--节流与防抖"/></a><div class="content"><a class="title" href="/2022/03/19/%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" title="前端--节流与防抖">前端--节流与防抖</a><time datetime="2022-03-18T16:00:00.000Z" title="发表于 2022-03-19 00:00:00">2022-03-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题"><img src="https://s3.ax1x.com/2020/12/31/rvEA3T.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="leetcode-数组题"/></a><div class="content"><a class="title" href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题">leetcode-数组题</a><time datetime="2021-01-25T16:00:00.000Z" title="发表于 2021-01-26 00:00:00">2021-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/11/%E4%BA%94%E5%AD%90%E6%A3%8B%E8%81%94%E6%9C%BA%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D/" title="游戏 | 联机版五子棋 v0.1"><img src="https://s3.ax1x.com/2021/01/11/s8aeKJ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="游戏 | 联机版五子棋 v0.1"/></a><div class="content"><a class="title" href="/2021/01/11/%E4%BA%94%E5%AD%90%E6%A3%8B%E8%81%94%E6%9C%BA%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D/" title="游戏 | 联机版五子棋 v0.1">游戏 | 联机版五子棋 v0.1</a><time datetime="2021-01-11T04:00:00.000Z" title="发表于 2021-01-11 12:00:00">2021-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/11/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%A4%8D%E4%B9%A0/" title="离散数学复习"><img src="https://s3.ax1x.com/2021/01/11/s8GD8H.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离散数学复习"/></a><div class="content"><a class="title" href="/2021/01/11/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%A4%8D%E4%B9%A0/" title="离散数学复习">离散数学复习</a><time datetime="2021-01-11T04:00:00.000Z" title="发表于 2021-01-11 12:00:00">2021-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BA%E6%96%87/" title="四种平衡二叉树"><img src="https://s3.ax1x.com/2021/01/06/sZE6yD.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="四种平衡二叉树"/></a><div class="content"><a class="title" href="/2021/01/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BA%E6%96%87/" title="四种平衡二叉树">四种平衡二叉树</a><time datetime="2021-01-06T14:00:00.000Z" title="发表于 2021-01-06 22:00:00">2021-01-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By www</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
