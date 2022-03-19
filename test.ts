@@ -1,3 +1,6 @@
-var str = '1' 
-var str2:number = <number> <any> str   //str、str2 是 string 类型
-console.log(typeof str2)
+function isBigEnough(element) { 
+    return (element >= 10); 
+} 
+    
+var passed = [12, 5, 8, 130, 44].every(isBigEnough); 
+console.log("Test Value : " + passed ); // false
