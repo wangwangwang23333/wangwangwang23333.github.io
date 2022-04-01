@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>单调栈的应用 | 欢迎来到www的网站</title><meta name="author" content="www"><meta name="copyright" content="www"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="LeetCode中单调栈的一些应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单调栈的应用">
+<meta property="og:url" content="http://wangwangwang.website/2022/03/29/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="欢迎来到www的网站">
+<meta property="og:description" content="LeetCode中单调栈的一些应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg">
+<meta property="article:published_time" content="2022-03-29T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T05:57:39.070Z">
+<meta property="article:author" content="www">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangwangwang.website/2022/03/29/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-01 13:57:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div></div></div><hr/></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">欢迎来到www的网站</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">单调栈的应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-29T04:00:00.000Z" title="发表于 2022-03-29 12:00:00">2022-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-01T05:57:39.070Z" title="更新于 2022-04-01 13:57:39">2022-04-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="84-柱状图中最大的矩形"><a href="#84-柱状图中最大的矩形" class="headerlink" title="84 柱状图中最大的矩形"></a>84 柱状图中最大的矩形</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/">https://leetcode-cn.com/problems/largest-rectangle-in-histogram/</a></p>
+<p>给定 <code>n </code>个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+</blockquote>
+<img src='https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg' width='50%'>
+
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>我们可以反过来考虑针对于每一个元素，都可以求出<strong>以它为高的最大矩形面积</strong>。</p>
+<p>那么这样一个矩形，它的底应该是多少呢？</p>
+<p>自然而然，我们可以发现：这一个矩形的左侧就是左边比它小的元素的位置，右侧自然也是比它小的元素的位置。</p>
+<p>以下图的元素5为例，它的最左侧就应该是比它小的元素1的右边，它的最右侧就应该是比它小的元素2的左边。</p>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220331205119619.png" alt="image-20220331205119619"></p>
+<p>因此，问题就转化成了：针对于每一个元素，我们都需要求出左边比它小的元素的位置以及右边比它小的元素的位置。</p>
+<h3 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h3><p>那么在从左往右遍历一遍的过程中，如何找出比它小的元素呢？</p>
+<p>我们自然而然的想到了单调递增栈（严格单调递增）：每当一个元素到达时候，不断出栈直到栈为空或者栈顶元素小于该元素，那么这个元素就一定是比它小的最近的元素。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">largestRectangleArea</span>(<span class="params">heights: <span class="built_in">number</span>[]</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 元素个数</span></span><br><span class="line">    <span class="keyword">let</span> n = heights.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> left = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">let</span> right = <span class="keyword">new</span> <span class="built_in">Array</span>(n).fill(n);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 单调递增栈：严格单调递增，存储的是元素下标</span></span><br><span class="line">    <span class="keyword">let</span> s = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从左往右遍历，计算left数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="comment">// 出栈，直到栈空或者满足栈顶元素 &lt; 当前元素</span></span><br><span class="line">        <span class="keyword">while</span> (s.length != <span class="number">0</span> &amp;&amp; heights[s[s.length - <span class="number">1</span>]] &gt;= heights[i]) &#123;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s.length != <span class="number">0</span>) &#123;</span><br><span class="line">            left[i] = s[s.length - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 入栈</span></span><br><span class="line">        s.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    s.splice(<span class="number">0</span>, s.length);</span><br><span class="line">    <span class="comment">// 从右往左遍历，计算right数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="comment">// 出栈，直到栈空或者满足栈顶元素 &lt; 当前元素</span></span><br><span class="line">        <span class="keyword">while</span> (s.length != <span class="number">0</span> &amp;&amp; heights[s[s.length - <span class="number">1</span>]] &gt;= heights[i]) &#123;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s.length != <span class="number">0</span>) &#123;</span><br><span class="line">            right[i] = s[s.length - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 入栈</span></span><br><span class="line">        s.push(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> maxRes = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        maxRes = <span class="built_in">Math</span>.max(maxRes, (right[i] - left[i] - <span class="number">1</span>) * heights[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> maxRes;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42 接雨水"></a>42 接雨水</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/trapping-rain-water/">https://leetcode-cn.com/problems/trapping-rain-water/</a></p>
+<p>给定 <code>n</code> 个非负整数表示每个宽度为 <code>1</code> 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
+</blockquote>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png" alt="img"></p>
+<h3 id="思考-1"><a href="#思考-1" class="headerlink" title="思考"></a>思考</h3><p>我们可以考虑计算每一根柱子所能接的雨水的高度。</p>
+<p>这个高度应该是：左右两侧柱子的高度。其中这根柱子满足，它是这根柱子左边（或右边）比它高的那一根柱子所能接到雨水的高度。</p>
+<p><code> 注意：不是左边（或）右边比它高的柱子的高度，因为可能还有更高的柱子。实际上应该是接到雨水的高度，因为比它高的雨水能借到的柱子，它自己也一定能接到。</code></p>
+<p>这样问题实际上就转化成了，寻找左边（或右边）最近的比它大的元素。</p>
+<p>自然而然，我们应该使用单调递减栈（严格单调递减）：每遍历到一个元素的时候，不断出栈直到栈空或者栈顶元素大于该元素。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trap</span>(<span class="params">height: <span class="built_in">number</span>[]</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = height.length;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="keyword">new</span> <span class="built_in">Array</span>(n);</span><br><span class="line">    <span class="keyword">let</span> right = <span class="keyword">new</span> <span class="built_in">Array</span>(n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> s = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="comment">// 出栈，直到栈空或者栈顶元素&gt;该元素</span></span><br><span class="line">        <span class="keyword">while</span> (s.length != <span class="number">0</span> &amp;&amp; height[s[s.length - <span class="number">1</span>]] &lt;= height[i]) &#123;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s.length == <span class="number">0</span>) &#123;</span><br><span class="line">            left[i] = height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            left[i] = left[s[s.length - <span class="number">1</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        s.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    s.splice(<span class="number">0</span>, s.length);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="comment">// 出栈，直到栈空或者栈顶元素&gt;该元素</span></span><br><span class="line">        <span class="keyword">while</span> (s.length != <span class="number">0</span> &amp;&amp; height[s[s.length - <span class="number">1</span>]] &lt;= height[i]) &#123;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s.length == <span class="number">0</span>) &#123;</span><br><span class="line">            right[i] = height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            right[i] = right[s[s.length - <span class="number">1</span>]];</span><br><span class="line">        &#125;</span><br><span class="line">        s.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        ans += <span class="built_in">Math</span>.min(left[i], right[i]) - height[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">www</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wangwangwang.website/2022/03/29/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/">http://wangwangwang.website/2022/03/29/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wangwangwang.website" target="_blank">欢迎来到www的网站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/03/29/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/"><img class="next-cover" src="https://s3.ax1x.com/2021/01/11/s8GD8H.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Git基本操作整理</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">www</div><div class="author-info__description">当你一觉醒来，我就在那银河外面远航</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangwangwang23333"><i class="fab fa-github"></i><span>关注我吧</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2"><span class="toc-number">1.</span> <span class="toc-text">84 柱状图中最大的矩形</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-number">1.1.</span> <span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-number">1.2.</span> <span class="toc-text">单调栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4"><span class="toc-number">2.</span> <span class="toc-text">42 接雨水</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83-1"><span class="toc-number">2.1.</span> <span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/29/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/" title="单调栈的应用"><img src="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="单调栈的应用"/></a><div class="content"><a class="title" href="/2022/03/29/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/" title="单调栈的应用">单调栈的应用</a><time datetime="2022-03-29T04:00:00.000Z" title="发表于 2022-03-29 12:00:00">2022-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/29/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git基本操作整理"><img src="https://s3.ax1x.com/2021/01/11/s8GD8H.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git基本操作整理"/></a><div class="content"><a class="title" href="/2022/03/29/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git基本操作整理">Git基本操作整理</a><time datetime="2022-03-29T04:00:00.000Z" title="发表于 2022-03-29 12:00:00">2022-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/19/%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" title="前端--节流与防抖"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端--节流与防抖"/></a><div class="content"><a class="title" href="/2022/03/19/%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" title="前端--节流与防抖">前端--节流与防抖</a><time datetime="2022-03-18T16:00:00.000Z" title="发表于 2022-03-19 00:00:00">2022-03-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题"><img src="https://s3.ax1x.com/2020/12/31/rvEA3T.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="leetcode-数组题"/></a><div class="content"><a class="title" href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题">leetcode-数组题</a><time datetime="2021-01-25T16:00:00.000Z" title="发表于 2021-01-26 00:00:00">2021-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/11/%E4%BA%94%E5%AD%90%E6%A3%8B%E8%81%94%E6%9C%BA%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D/" title="游戏 | 联机版五子棋 v0.1"><img src="https://s3.ax1x.com/2021/01/11/s8aeKJ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="游戏 | 联机版五子棋 v0.1"/></a><div class="content"><a class="title" href="/2021/01/11/%E4%BA%94%E5%AD%90%E6%A3%8B%E8%81%94%E6%9C%BA%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D/" title="游戏 | 联机版五子棋 v0.1">游戏 | 联机版五子棋 v0.1</a><time datetime="2021-01-11T04:00:00.000Z" title="发表于 2021-01-11 12:00:00">2021-01-11</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By www</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
