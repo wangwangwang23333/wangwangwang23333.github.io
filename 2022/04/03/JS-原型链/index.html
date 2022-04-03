@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JS——原型链 | 欢迎来到www的网站</title><meta name="author" content="www"><meta name="copyright" content="www"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="有关Js原型链的一些知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS——原型链">
+<meta property="og:url" content="http://wangwangwang.website/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
+<meta property="og:site_name" content="欢迎来到www的网站">
+<meta property="og:description" content="有关Js原型链的一些知识。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162850136.png">
+<meta property="article:published_time" content="2022-04-03T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-03T12:17:44.873Z">
+<meta property="article:author" content="www">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162850136.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangwangwang.website/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-03 20:17:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div></div></div><hr/></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162850136.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">欢迎来到www的网站</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JS——原型链</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-03T10:00:00.000Z" title="发表于 2022-04-03 18:00:00">2022-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-03T12:17:44.873Z" title="更新于 2022-04-03 20:17:44">2022-04-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在学习JS中的原型，原型链，继承这些知识之前，我们先学习下基础知识：<strong>函数和对象的关系</strong>。</p>
+<p>我们一直都知道，函数也是对象的一种，因为通过<code>instanceof</code>就可以判断出来。但是函数和对象的关系并不是简单的包含和被包含的关系，这两者之间的关系还是有点复杂的。接下来我们就来捋一捋。</p>
+<p>首先，阐述一点，<strong>对象都是通过函数创建的</strong>。<br>对于下面这种类型的代码，一般叫做“语法糖”：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">10</span>,<span class="attr">b</span>:<span class="number">20</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">5</span>, <span class="string">&#x27;x&#x27;</span>, <span class="literal">true</span>];</span><br></pre></td></tr></table></figure>
+<p>但是，其实上面这段代码的实质是下面这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">obj.a = <span class="number">10</span>;</span><br><span class="line">obj.b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">5</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="string">&#x27;x&#x27;</span>;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>而<code>Object</code>和<code>Array</code>都是函数，可以自己用<code>typeof</code>函数进行验证。</p>
+<p>所以，可以得出：<strong>对象都是通过函数创建的</strong>。</p>
+<p>那么下面就进入正题。</p>
+<h2 id="原型prototype"><a href="#原型prototype" class="headerlink" title="原型prototype"></a>原型prototype</h2><p>在前言中，我们说了函数也是一种对象，所以函数也是属性的集合，同时，也可以对函数进行自定义属性。<br><strong>每个函数都有一个属性——prototype。这个prototype的属性值是一个对象（属性的集合），默认只有一个叫做constructor的属性，指向这个函数本身。</strong> 如下图所示：</p>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403154221307.png" alt="image-20220403154221307"></p>
+<p>上图中，<code>SuperType</code>是一个函数，右侧的方框就是<strong>它的原型</strong>。</p>
+<p>原型既然作为对象（属性的集合），除了<code>constructor</code>外，还可以自定义许多属性，比如下面这样的：</p>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403154324885.png" alt="image-20220403154324885"></p>
+<p>当然了，我们也可以在自己定义的方法的<code>prototype</code>中增加我们自己的属性，比如像下面这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">Fn.prototype.name = <span class="string">&#x27;张三&#x27;</span>;</span><br><span class="line">Fn.prototype.getAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">12</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Fn();</span><br></pre></td></tr></table></figure>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403154612542.png" alt="image-20220403154612542"></p>
+<p>Fn就是下面这样：</p>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403154633724.png" alt="image-20220403154633724"></p>
+<p>那么问题来了：函数的<code>prototype</code>到底有何用呢？</p>
+<p>在解决这个问题之前，我们还是先来看下另一个让人迷糊的属性：<code>__proto__</code></p>
+<h2 id="隐式原型-proto"><a href="#隐式原型-proto" class="headerlink" title="隐式原型  _ proto_"></a>隐式原型  _ proto_</h2><p>先看一段非常常见的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">Fn.prototype.name = <span class="string">&#x27;张三&#x27;</span>;</span><br><span class="line">Fn.prototype.getAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">12</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> fn = <span class="keyword">new</span> Fn();</span><br><span class="line"><span class="built_in">console</span>.log(fn.name);</span><br><span class="line"><span class="built_in">console</span>.log(fn.getAge());</span><br></pre></td></tr></table></figure>
+<p>即，Fn是一个函数，fn对象是从Fn函数new出来的，这样fn对象就可以调用Fn.prototype中的属性。</p>
+<p>但是，因为每个对象都有一个隐藏的属性——<code> __proto__</code>，这个属性引用了<strong>创建这个对象的函数的prototype</strong>。即：<code>fn._proto_ === Fn.prototype</code><br>那么，这里的<code>__proto__</code>到底是什么呢？</p>
+<p>其实，这个<code>__proto__</code>是一个隐藏的属性，javascript不希望开发者用到这个属性值，有的低版本浏览器甚至不支持这个属性值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj.__proto__);</span><br></pre></td></tr></table></figure>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403160024050.png" alt="image-20220403160024050"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype);</span><br></pre></td></tr></table></figure>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403160148483.png" alt="image-20220403160148483"></p>
+<p>从上面来看，<code>obj.__proto__</code>和<code>Object.prototype</code>的属性一样！为什么呢？</p>
+<p>原因是：obj这个对象本质上是被Object函数创建的，因此obj.<strong>__proto__</strong>=== Object.prototype。我们可以用一个图来表示。</p>
+<img src='https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403160408070.png' width="50%">
+
+<p>即，<strong>每个对象都有一个__proto__属性，指向创建该对象的函数的prototype。</strong></p>
+<blockquote>
+<p><strong>说一下自定义函数的prototype：</strong><br>自定义函数的<code>prototype</code>本质上就是和 <code>var obj = &#123;&#125;</code> 是一样的，都是被<code>Object</code>创建，所以它的<code>__proto__</code>指向的就是<code>Object.prototype</code>。</p>
+</blockquote>
+<p>但是，**<code>Object.prototype</code>确实一个特例——它的<code>__proto__</code>指向的是<code>null</code>**。</p>
+<img src='https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403161118789.png' width="50%">
+
+<p>另外一个问题：函数也是一种对象，函数也有<code>__proto__</code>吗？<br>答：当然也不例外啦！<br>下面用一段代码和一张图来说明这个问题，看完相信就有个比较直观的理解啦！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn(<span class="number">10</span>,<span class="number">20</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下只是为了演示函数被Function创建的</span></span><br><span class="line"><span class="keyword">var</span> fn1 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&quot;x&quot;</span>,<span class="string">&quot;y&quot;</span>,<span class="string">&quot;return x+y;&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fn1(<span class="number">5</span>,<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
+<p>用图表示就是：</p>
+<img src='https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403161731562.png' width="60%">
+
+<p>从上图可以看出：自定义函数<code>Foo.__proto__</code>指向<code>Function.prototype</code>，<code>Object.__proto__</code>指向<code>Function.prototype</code>。</p>
+<p>但是，为什么有<code>Function.__proto__</code>指向<code>Function.prototype</code>呢？</p>
+<p>其实原因很简单：**<code>Function</code>也是一个函数，函数是一种对象，也有<code>__proto__</code>属性。既然是函数，那么它一定是被<code>Function</code>创建。所以<code>Function</code>是被自身创建的。所以它的<code>__proto__</code>指向了自身的<code>Prototype</code>**</p>
+<p>最后一个问题：<code>Function.prototype</code>指向的对象，它的<code>__proto__</code>是不是也指向<code>Object.prototype</code>？</p>
+<p>答案是肯定的。因为<code>Function.prototype</code>指向的对象也是一个普通的被<code>Object</code>创建的对象，所以也遵循基本的规则。如下图：</p>
+<img src='https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162506341.png' width="50%">
+
+<p>说了这么多，我们将上面这些图片整合到一整个图片，便于整体理解，图片如下：</p>
+<img src='https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162639383.png' width="50%">
+
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p>主要是说明下<code>instanceof</code>的判断规则是如何进行的。先看如下代码和图片：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(f1 <span class="keyword">instanceof</span> Foo);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(f1 <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<img src='https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162850136.png' width="50%">
+
+<p><code>instanceof</code>的判断规则为：<br>假设<code>instanceof</code>运算符的第一个变量是一个对象，暂时称为A；第二个变量一般是一个函数，暂时称为B。</p>
+<p><code>instanceof</code>的判断规则是：沿着A的<code>__proto__</code>这条线来找，同时沿着B的<code>prototype</code>这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回<code>true</code>。如果找到终点还未重合，则返回<code>false</code>。</p>
+<p>结合这个判断规则，上面的代码和图示相信很容易看懂了。</p>
+<h2 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h2><p>首先说一下什么是原型链：<br><strong>访问一个对象的属性时，先在基本属性中查找，如果没有，再沿着_proto_这条链向上找，这就是原型链</strong>。</p>
+<p>举一个例子说明下吧：<br>在实际应用中如何区分一个属性到底是基本的还是从原型中找到的呢？<br>答案就是：<code>hasOwnProperty</code>这个函数，特别是在for…in…循环中，一定要注意。</p>
+<p><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403174502374.png" alt="image-20220403174502374"></p>
+<p>但是，<code>f1</code>本身并没有<code>hasOwnProperty</code>这个方法，那是从哪里来的呢？答案很简单，是从<code>Object.prototype</code>中来的。看下图：</p>
+<img src='https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403174630283.png' width='70%'>
+
+<p>对象的原型链是沿着<code>__proto__</code>这条线走的，因此在查找<code>f1.hasOwnProperty</code>属性时，就会顺着原型链一直查找到<code>Object.prototype</code>。</p>
+<p>由于所有对象的原型链都会找到<code>Object.prototype</code>，因此所有对象都会有<code>Object.prototype</code>的方法。这就是所谓的“继承”。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><blockquote>
+<p>下面这段代码的输出：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Setcount</span>(<span class="params">count</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">this</span>.count=count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Setcount.prototype.printCount=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.count)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> Setcount(<span class="number">100</span>)</span><br><span class="line">a.count =<span class="number">200</span></span><br><span class="line">a.__proto__.count=<span class="number">300</span></span><br><span class="line">a.__proto__.printCount()</span><br><span class="line">a.printCount()</span><br></pre></td></tr></table></figure>
+
+<p>结果为300和200。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">www</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wangwangwang.website/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/">http://wangwangwang.website/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wangwangwang.website" target="_blank">欢迎来到www的网站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162850136.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/03/31/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/"><img class="next-cover" src="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">单调栈的应用</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">www</div><div class="author-info__description">当你一觉醒来，我就在那银河外面远航</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangwangwang23333"><i class="fab fa-github"></i><span>关注我吧</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8Bprototype"><span class="toc-number">2.</span> <span class="toc-text">原型prototype</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B-proto"><span class="toc-number">3.</span> <span class="toc-text">隐式原型  _ proto_</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#instanceof"><span class="toc-number">4.</span> <span class="toc-text">instanceof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF"><span class="toc-number">5.</span> <span class="toc-text">原型继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">示例</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/" title="JS——原型链"><img src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162850136.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS——原型链"/></a><div class="content"><a class="title" href="/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/" title="JS——原型链">JS——原型链</a><time datetime="2022-04-03T10:00:00.000Z" title="发表于 2022-04-03 18:00:00">2022-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/31/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/" title="单调栈的应用"><img src="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="单调栈的应用"/></a><div class="content"><a class="title" href="/2022/03/31/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/" title="单调栈的应用">单调栈的应用</a><time datetime="2022-03-31T12:00:00.000Z" title="发表于 2022-03-31 20:00:00">2022-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/29/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git基本操作整理"><img src="https://s3.ax1x.com/2021/01/11/s8GD8H.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git基本操作整理"/></a><div class="content"><a class="title" href="/2022/03/29/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git基本操作整理">Git基本操作整理</a><time datetime="2022-03-29T04:00:00.000Z" title="发表于 2022-03-29 12:00:00">2022-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/19/%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" title="前端--节流与防抖"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端--节流与防抖"/></a><div class="content"><a class="title" href="/2022/03/19/%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" title="前端--节流与防抖">前端--节流与防抖</a><time datetime="2022-03-18T16:00:00.000Z" title="发表于 2022-03-19 00:00:00">2022-03-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题"><img src="https://s3.ax1x.com/2020/12/31/rvEA3T.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="leetcode-数组题"/></a><div class="content"><a class="title" href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题">leetcode-数组题</a><time datetime="2021-01-25T16:00:00.000Z" title="发表于 2021-01-26 00:00:00">2021-01-26</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By www</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
