@@ -1,0 +1,15 @@
+/* 默认隐藏图片 */
+.img-dark-mode {
+    display: none !important;
+}
+
+/* 媒体查询，当系统设置为暗色模式时显示图片 */
+/* @media (prefers-color-scheme: dark) {
+    .img-dark-mode {
+        display: block !important;
+    }
+} */
+
+[data-theme='dark'] .img-dark-mode {
+    display: block !important;
+}
