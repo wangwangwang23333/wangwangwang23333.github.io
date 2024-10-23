@@ -3,13 +3,84 @@
     display: none !important;
 }
 
-/* 媒体查询，当系统设置为暗色模式时显示图片 */
-/* @media (prefers-color-scheme: dark) {
-    .img-dark-mode {
-        display: block !important;
-    }
-} */
+
 
 [data-theme='dark'] .img-dark-mode {
     display: block !important;
+}
+
+/* 默认明亮主题样式 */
+.comments-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: auto;
+    color: #333;
+}
+
+.comment-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #333;
+}
+
+.comment-author {
+    margin: 0;
+    line-height: 1;
+    color: #333;
+}
+
+.comment-date {
+    margin-left: 10px;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.comment-body p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0 0 0;
+}
+
+.comment {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+/* 暗色模式样式 */
+[data-theme='dark'] .comments-container {
+    background: #222;
+    color: #ccc;
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+}
+
+[data-theme='dark'] .comment {
+    border-bottom: 1px solid #444;
+}
+
+[data-theme='dark'] .comment-header strong {
+    color: #ddd;
+}
+
+[data-theme='dark'] .comment-header span {
+    color: #bbb;
+}
+
+[data-theme='dark'] .comment-body p {
+    color: #ccc;
 }
