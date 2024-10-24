@@ -56,8 +56,8 @@ function getStatus(person, date) {
     if (person === 'rene' || person === 'lurenjia') {
         return statusRules[person][dayOfWeek];
     }
-    if (pserson === 'yueguang') {
-        return 'onsite';
+    if (person === 'yueguang') {
+        return 'emergency';
     }
 
     // 默认状态为 idle

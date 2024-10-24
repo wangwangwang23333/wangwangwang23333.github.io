@@ -124,8 +124,8 @@
 
 .status-indicator {
     display: inline-block;
-    width: 10px;  /* 指示器的宽度 */
-    height: 10px; /* 指示器的高度 */
+    width: 15px;  /* 指示器的宽度 */
+    height: 15px; /* 指示器的高度 */
     border-radius: 50%; /* 使得指示器为圆形 */
     margin-left: 5px; /* 在名称和状态指示器之间添加一点间距 */
     vertical-align: middle; /* 确保与文字垂直居中对齐 */
