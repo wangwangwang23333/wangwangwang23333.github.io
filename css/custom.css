@@ -115,9 +115,40 @@
 [data-theme='dark'] .popover {
     background-color: #333; /* 暗背景色 */
     color: #ccc; /* 浅灰色文字，增加可读性 */
-    box-shadow: 0 2px 5px rgba(255,255,255,0.1); /* 浅色阴影 */
+    box-shadow: 0 1px 5px rgba(255,255,255,0.1); /* 浅色阴影 */
 }
 
 [data-theme='dark'] .popover-content p {
     color: #ccc; /* 调整文字颜色以适应暗背景 */
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 10px;  /* 指示器的宽度 */
+    height: 10px; /* 指示器的高度 */
+    border-radius: 50%; /* 使得指示器为圆形 */
+    margin-left: 5px; /* 在名称和状态指示器之间添加一点间距 */
+    vertical-align: middle; /* 确保与文字垂直居中对齐 */
+    border: 2px solid transparent; /* 默认边框为透明 */
+}
+
+/* 空闲 */
+.status-idle {
+    background-color: #ffffff;
+    border-color: #ccc; /* 在白天模式下提升可见性 */
+}
+
+/* 现场工作 */
+.status-onsite {
+    background-color: #b7c5e4;
+}
+
+/* 线上支持 */
+.status-online {
+    background-color: #a1a1a1;
+}
+
+/* 紧急响应 */
+.status-emergency {
+    background-color: #f7cbb0;
 }
