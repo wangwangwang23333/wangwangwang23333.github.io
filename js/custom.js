@@ -42,10 +42,22 @@ function getStatus(person, date) {
             '4': 'onsite',   // 星期四
             '5': 'onsite',   // 星期五
             '6': 'online'   // 星期六
+        },
+        lurenjia: {
+            '0': 'emergency',  // 星期日
+            '1': 'onsite', // 星期一
+            '2': 'onsite', // 星期二
+            '3': 'online', // 星期三
+            '4': 'online',   // 星期四
+            '5': 'online',   // 星期五
+            '6': 'emergency'   // 星期六
         }
     };
-    if (person === 'rene') {
+    if (person === 'rene' || person === 'lurenjia') {
         return statusRules[person][dayOfWeek];
+    }
+    if (pserson === 'yueguang') {
+        return 'onsite';
     }
 
     // 默认状态为 idle
