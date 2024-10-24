@@ -63,7 +63,7 @@ function getStatus(person, date) {
             '6': 'idle'   // 星期六
         }
     };
-    if (person === 'rene' || person === 'lurenjia') {
+    if (person === 'rene' || person === 'lurenjia' || person === 'jishuzhai') {
         return statusRules[person][dayOfWeek];
     }
     if (person === 'yueguang') {
