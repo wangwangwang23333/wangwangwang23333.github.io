@@ -32,6 +32,7 @@
     align-items: center;
     font-size: 1rem;
     color: #333;
+    position: relative; /* 确保popover可以正确定位 */
 }
 
 .comment-author {
@@ -83,4 +84,40 @@
 
 [data-theme='dark'] .comment-body p {
     color: #ccc;
+}
+
+.popover {
+    position: absolute;
+    top: 100%; /* 位于触发元素的下方 */
+    left: 0;
+    width: 200px;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: none; /* 默认不显示 */
+    z-index: 10;
+    font-size: small;
+}
+
+.popover-content p {
+    margin: 0;
+    padding: 0px 0;
+}
+
+.comment-header:hover .popover {
+    display: block; /* 鼠标悬浮时显示 */
+}
+
+
+/* 暗色模式下的popover样式 */
+[data-theme='dark'] .popover {
+    background-color: #333; /* 暗背景色 */
+    color: #ccc; /* 浅灰色文字，增加可读性 */
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1); /* 浅色阴影 */
+}
+
+[data-theme='dark'] .popover-content p {
+    color: #ccc; /* 调整文字颜色以适应暗背景 */
 }
