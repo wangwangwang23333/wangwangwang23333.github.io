@@ -51,6 +51,16 @@ function getStatus(person, date) {
             '4': 'online',   // 星期四
             '5': 'online',   // 星期五
             '6': 'emergency'   // 星期六
+        },
+        jishuzhai: {
+            // 一周5天上班，周日休息
+            '0': 'idle',  // 星期日
+            '1': 'onsite', // 星期一
+            '2': 'onsite', // 星期二
+            '3': 'onsite', // 星期三
+            '4': 'onsite',   // 星期四
+            '5': 'onsite',   // 星期五
+            '6': 'idle'   // 星期六
         }
     };
     if (person === 'rene' || person === 'lurenjia') {
