@@ -34,6 +34,13 @@ function getStatus(person, date) {
         xiaochen: { '2024-12-08': 'online', '2024-12-09': 'online', '2024-12-12': 'onsite' },
         xiaowang: { '2024-12-07': 'online', '2024-12-08': 'online', '2024-12-09': 'online', '2024-12-10': 'online', '2024-12-12': 'onsite' },
         xiaojiao: { '2024-12-05': 'onsite', '2024-12-06': 'onsite', '2024-12-07': 'onsite', '2024-12-08': 'onsite', '2024-12-09': 'onsite', '2024-12-10': 'emergency', '2024-12-11': 'emergency', '2024-12-12': 'emergency' },
+        xiaowang2: {
+            '2024-12-06': 'onsite',
+            '2024-12-07': 'onsite',
+            '2024-12-08': 'onsite',
+            '2024-12-09': 'onsite',
+            '2024-12-10': 'onsite',
+        },
         rene: { // Rene 的状态根据星期决定
             '0': 'online',  // 星期日
             '1': 'emergency', // 星期一
