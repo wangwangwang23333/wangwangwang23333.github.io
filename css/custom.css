@@ -25,6 +25,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+    margin: 0  0.8rem !important;
 }
 
 .comment-header {
