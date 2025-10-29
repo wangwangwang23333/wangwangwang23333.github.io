@@ -1,0 +1,312 @@
+<HTML>
+
+<HEAD>
+
+    <!--css样式定制-->
+    <style>
+        .touming{  
+        background: rgba(255,255,255,.3);  
+        border-color: rgba(255,255,255,.6);  
+        border-style: solid;  
+        border-width: 2px;  
+        -moz-border-radius: 5px;  
+        -webkit-border-radius: 5px;  
+        -khtml-border-radius: 5px;  
+        border-radius: 5px;  
+        line-height: 30px;  
+        list-style: none;  
+        padding: 5px 10px;  
+        margin-bottom: 2px;  
+        } 
+        .div {
+        display: inline-block;
+        padding: .3em .5em;
+        background-image: linear-gradient(#ddd, #bbb);
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: .3em;
+        box-shadow: 0 1px white inset;
+        text-align: center;
+        text-shadow: 0 1px 1px black;
+        color: white;
+        font-weight: bold;
+        }
+        .div:active {
+        box-shadow: .05em .1em .2em rgba(0, 0, 0, .6) inset;
+        border-color: rgba(0, 0, 0, .3);
+        background: #bbb;
+        }
+        .button-hover:hover {
+        box-shadow: 0 0px 4px 0 rgba(0,0,0,0.24),0 4px 6px 0 rgba(32, 32, 32, 0.19);
+        }
+        .container-edit{
+        margin-top: 10px;
+        margin-bottom: 80px;
+        background: rgba(255,255,255,.3);  
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: .5rem;
+        border-radius: 1.1rem;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+
+    <!--悬浮广告-->
+<script>
+    //漂浮广告的初始位置
+     var x=50,y=60;
+    
+     //xin为真,则向右运动,否则向左运动.
+     //yin为真,则向右运动,否则向左运协.
+     var xin=true,yin=true;
+    
+     //移动的距离
+     var step=0.3;
+    
+     //移动的步长
+     var delay=1;
+    
+     var mouseOnIt=false;
+
+     function floatAD()
+     {
+
+        if(!mouseOnIt)
+        {
+            //L左边界,T右边界
+         var L=T=0;
+         //层移动的右边界
+         var R=window.document.body.offsetWidth-window.document.getElementById("fly").offsetWidth;
+         //层移动的下边界
+         var B=window.document.body.offsetHeight-window.document.getElementById("fly").offsetHeight;
+        
+         //层移动后的左边界
+         window.document.getElementById("fly").style.left=x;
+        
+         //层移动后的上边界
+         window.document.getElementById("fly").style.top=y;
+        
+         //判断水平方向
+         x=x+step*(xin?1:-1);
+        
+         //到达边界后的处理
+         if(x<L){xin=true;x=L;}
+         if(x>R){xin=false;x=R}
+        
+         //判断生直方向
+         y=y+step*(yin?1:-1);
+        
+         //到达边界后的处理
+         if(y<T){yin=true;y=T;}
+         if(y>B){yin=false;y=B;}
+        }
+
+         
+        
+         //隔多少时间调用一次
+         setTimeout("floatAD()",delay);
+     }
+
+     //用于恢复图片运动
+     function continueMove()
+     {
+         mouseOnIt=false;
+     }
+
+     //用于暂停图片运动
+     function stopMove()
+     {
+        mouseOnIt=true;
+     }
+
+     //查找书籍
+     function gotoWebsite()
+     {
+        if(sousuokuang.value=="")
+            alert("请输入要搜索的书籍名");
+        else
+        {
+            window.location.href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="
+            +sousuokuang.value;
+        }
+     }
+</script>
+
+
+    <TITLE>每日好书推荐网</TITLE>
+</HEAD>
+
+<fieldset class="touming">
+    <legend>
+        <font size=6>
+            每日好书推荐网
+        </font>
+    </legend>	    
+    <div align="center">
+        <b>
+            <font size=5>
+                每日好书网，每天，为您推出最新最优质的好书
+            </font>
+        </b>
+    </div>
+    <div align="right">
+        <!--搜索框-->
+        <img src="find.jpg"  width="20" height="20" > 
+        <input  name="sousuokuang" size="30" maxlength="25" placeholder="搜索查询的书籍信息" type="search" id="sousuokuang">
+        <!--搜索按钮-->
+
+        <button type="button" name="pass" size="30" maxlength="25" 
+        value="搜索" class="div button-hover" onclick="gotoWebsite()">
+            搜索
+        </button>
+
+    </div>
+    
+</fieldset>
+
+
+
+<br>
+<br>
+
+<BODY background="bg.jpg">
+
+    <TABLE border=1 align="center" width="80%" height="150" class="touming">
+        <thead>
+            <!-- 表头-->
+            <TR ALIGN="CENTER">
+                <TH>序 号</TH>
+                <TH>书 名</TH>
+                <TH>作 者</TH>
+                <TH>简 介</TH>
+                <TH>评 分</TH>
+            </TR>
+        </thead>
+
+
+        <tfoot>
+            <!-- 表格 页脚-->
+            <tr>
+                <td id="updateTime" colspan=4>更新时间：正在加载</td>
+            </tr>
+        </tfoot>
+
+        </tbody><!-- 表格 表体-->
+        <TR ALIGN=CENTER>
+            <TD>1</TD>
+            <TD>红楼梦</TD>
+            <TD>曹雪芹</TD>
+            <TD>都云作者痴，谁解其中味？</TD>
+            <TD>9.6</TD>
+        </tr>
+        <tr ALIGN=CENTER>
+            <TD>2</TD>
+            <TD>活着</TD>
+            <TD>余华</TD>
+            <TD>生的苦难和伟大</TD>
+            <TD>9.4</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>3</TD>
+            <TD>1984</TD>
+            <TD>乔治·奥威尔</TD>
+            <TD>栗树荫下，我出卖你，你出卖我</TD>
+            <TD>9.3</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>4</TD>
+            <TD>百年孤独</TD>
+            <TD>加西亚·马尔克斯</TD>
+            <TD>魔幻现实主义文学代表作</TD>
+            <TD>9.3</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>5</TD>
+            <TD>飘</TD>
+            <TD>玛格丽特·米切尔</TD>
+            <TD>革命时期的爱情，随风而逝</TD>
+            <TD>9.3</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>6</TD>
+            <TD>三体全集</TD>
+            <TD>刘慈欣</TD>
+            <TD>地球往事三部曲</TD>
+            <TD>9.4</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>7</TD>
+            <TD>三国演义（全二册）</TD>
+            <TD>罗贯中</TD>
+            <TD>是非成败转头空</TD>
+            <TD>9.3</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>8</TD>
+            <TD>房思琪的初恋乐园</TD>
+            <TD>林奕含</TD>
+            <TD>向死而生的文学绝唱</TD>
+            <TD>9.2</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>9</TD>
+            <TD>动物农场</TD>
+            <TD>乔治·奥威尔</TD>
+            <TD>太阳底下并无新事</TD>
+            <TD>9.2</TD>
+        </TR>
+        <tr ALIGN=CENTER>
+            <TD>10</TD>
+            <TD>白夜行</TD>
+            <TD>东野圭吾</TD>
+            <TD>一宗离奇命案牵出跨度近20年步步惊心的故事</TD>
+            <TD>9.1</TD>
+        </TR>
+        <tbody>
+
+
+
+
+    </TABLE>
+    
+</BODY>
+
+<!--友情网站-->
+<fieldset class="container-edit">
+    <div align="center">
+        <img src="love.jpg"  width="30" height="30" > 
+        <font size=5>友情网站</font>
+        <img src="love.jpg"  width="30" height="30" > 
+    </div>
+    <div align="center">
+        <A HREF="https://www.tongji.edu.cn/" title="打开同济首页">同济大学</A>
+        <br>
+        <A HREF="https://www.4399.com/" title="打开游戏平台">4399</A>
+    </div>
+</fieldset>
+
+
+</HTML>
+
+<!--函数-->
+<script>
+    //时间
+    var d=new Date();
+    var a="更新时间：";
+    a+=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";
+    //更新日期
+    document.getElementById("updateTime").innerHTML=a;
+
+    function findBook()
+    {
+        //获取输入框的内容
+        var result = document.sousuokuang.result.value;
+
+    }
+</script>
+
+<div id="fly" style="position:absolute;   left:16px;    top:80px; width:295px; height:176px; z-index:1;">
+    <img src="wechat.jpg" width="100" height="100"  onload="floatAD()" name="wechatimage" onmousemove="stopMove()" onmouseout="continueMove()">
+</div>
+
+

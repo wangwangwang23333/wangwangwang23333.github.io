@@ -1,0 +1,64 @@
+name: Pages
+
+on:
+  push:
+    branches: [ main ]        # 你的默认分支
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1                        # 不启用 submodules，避免 .gitmodules 报错
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      # 如果主题不在仓库内，这里在 CI 中临时拉取主题
+      - name: Fetch Hexo theme (butterfly)
+        run: |
+          mkdir -p themes
+          git clone --depth=1 https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (Hexo)
+        env:
+          HEXO_ENV: production
+        run: |
+          npx hexo clean
+          npx hexo generate
+          test -f public/index.html || (echo "No public/index.html generated" && exit 1)
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public       # 👈 从子目录上传构建产物
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

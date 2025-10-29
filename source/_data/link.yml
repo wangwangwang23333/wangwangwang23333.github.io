@@ -1,0 +1,11 @@
+- class_name: 友情链接
+  class_desc: 我的大佬朋友们
+  link_list:
+    - name: Manxin
+      link: https://manxin521.site/
+      avatar: https://jerryc.me/image/avatar.png
+      descr: 人们说活着是为了快乐，可快乐又是为了什么呢
+    - name: Letian
+      link: https://letian.website/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: 求知若饥，虚心若愚
