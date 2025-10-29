@@ -50,7 +50,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public       # 👈 从子目录上传构建产物
+          path: public      
 
   deploy:
     needs: build
