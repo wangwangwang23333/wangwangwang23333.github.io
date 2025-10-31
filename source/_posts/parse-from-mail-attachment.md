@@ -1,7 +1,7 @@
 ---
-title: parse_from_mail_attachment
+title: 提取邮件文件的全部附件的Python代码
 date: 2024-07-05 00:39:17
-tags:
+tags: 技术
 ---
 
 ## 如何提取邮件`.eml`文件的全部附件呢？
