@@ -63,7 +63,7 @@ avatar:
 disable_top_img: false
 
 # If the banner of page not setting, it will show the default_top_img
-default_top_img:
+default_top_img: (https://upic-1301780692.cos.ap-shanghai.myqcloud.com/2b1df7d30d020dd159551c1f87305b44-20251101-180600.jpg
 
 # The banner image of index page
 index_img:
@@ -288,10 +288,10 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/wangwangwang23333
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 个人博客，已上线秋招相关内容
   card_recent_post:
     enable: true
     # If set 0 will show all

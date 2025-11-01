@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ElementUI2 开发 | 欢迎来到汪汪汪的网站</title><meta name="author" content="www"><meta name="copyright" content="www"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="需要python2环境 https:&#x2F;&#x2F;www.wyr.me&#x2F;post&#x2F;658 12345brew install pyenvpyenv install 2.7.18export PATH&#x3D;&quot;$(pyenv root)&#x2F;shims:$&amp;#123;PATH&amp;#125;&quot;pyenv global 2.7.18python --version   需要注意node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElementUI2 开发">
+<meta property="og:url" content="http://wangwangwang.website/2023/04/25/ElementUI2-%E5%BC%80%E5%8F%91/">
+<meta property="og:site_name" content="欢迎来到汪汪汪的网站">
+<meta property="og:description" content="需要python2环境 https:&#x2F;&#x2F;www.wyr.me&#x2F;post&#x2F;658 12345brew install pyenvpyenv install 2.7.18export PATH&#x3D;&quot;$(pyenv root)&#x2F;shims:$&amp;#123;PATH&amp;#125;&quot;pyenv global 2.7.18python --version   需要注意node">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg">
+<meta property="article:published_time" content="2023-04-25T04:06:16.000Z">
+<meta property="article:modified_time" content="2023-04-25T04:07:58.000Z">
+<meta property="article:author" content="www">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ElementUI2 开发",
+  "url": "http://wangwangwang.website/2023/04/25/ElementUI2-%E5%BC%80%E5%8F%91/",
+  "image": "https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg",
+  "datePublished": "2023-04-25T04:06:16.000Z",
+  "dateModified": "2023-04-25T04:07:58.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "www",
+      "url": "http://wangwangwang.website"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangwangwang.website/2023/04/25/ElementUI2-%E5%BC%80%E5%8F%91/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ElementUI2 开发',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 5.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/(https:/upic-1301780692.cos.ap-shanghai.myqcloud.com/2b1df7d30d020dd159551c1f87305b44-20251101-180600.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">欢迎来到汪汪汪的网站</span></a><a class="nav-page-title" href="/"><span class="site-name">ElementUI2 开发</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">ElementUI2 开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-25T04:06:16.000Z" title="发表于 2023-04-25 12:06:16">2023-04-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-25T04:07:58.000Z" title="更新于 2023-04-25 12:07:58">2023-04-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>需要python2环境</p>
+<p><a target="_blank" rel="noopener" href="https://www.wyr.me/post/658">https://www.wyr.me/post/658</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew install pyenv</span><br><span class="line">pyenv install 2.7.18</span><br><span class="line">export PATH&#x3D;&quot;$(pyenv root)&#x2F;shims:$&#123;PATH&#125;&quot;</span><br><span class="line">pyenv global 2.7.18</span><br><span class="line">python --version</span><br></pre></td></tr></table></figure>
+
+
+<p>需要注意node-sass版本的对应关系</p>
+<p>如，默认的node-sass是4.11.0，而这个版本对node有要求：</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Architecture</th>
+<th>Node</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>x86 &amp; x64</td>
+<td>0.10, 0.12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11</td>
+</tr>
+<tr>
+<td>OSX</td>
+<td>x64</td>
+<td>0.10, 0.12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11</td>
+</tr>
+<tr>
+<td>Linux*</td>
+<td>x86 &amp; x64</td>
+<td>0.10, 0.12, 1, 2, 3, 4, 5, 6, 7, 8**, 9**, 10<strong>^, 11</strong></td>
+</tr>
+<tr>
+<td>Alpine Linux</td>
+<td>x64</td>
+<td>6, 8, 10, 11</td>
+</tr>
+</tbody></table>
+<p>所以使用nvm install 11，先下载11版本的node</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://wangwangwang.website">www</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://wangwangwang.website/2023/04/25/ElementUI2-%E5%BC%80%E5%8F%91/">http://wangwangwang.website/2023/04/25/ElementUI2-%E5%BC%80%E5%8F%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://wangwangwang.website" target="_blank">欢迎来到汪汪汪的网站</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/04/25/React-native%E5%BC%80%E5%8F%91/" title="React native开发"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">React native开发</div></div><div class="info-2"><div class="info-item-1">配置android环境 12345export ANDROID_HOME=$HOME/Library/Android/sdkexport PATH=$PATH:$ANDROID_HOME/emulatorexport PATH=$PATH:$ANDROID_HOME/toolsexport PATH=$PATH:$ANDROID_HOME/tools/binexport PATH=$PATH:$ANDROID_HOME/platform-tools  </div></div></div></a><a class="pagination-related" href="/2023/04/24/Ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="Ubuntu系统中的常用操作"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Ubuntu系统中的常用操作</div></div><div class="info-2"><div class="info-item-1">jenkins的配置安装jenkins： https://blog.csdn.net/wf908164152/article/details/125716221 1sudo apt-get install maven 设置权限： 1vim /etc/default/jenkins  12# 把jenkins目录文件交给ubuntu用户chown -R ubuntu:ubuntu /var/lib/jenkins 安装gitee、maven、nodejs插件 12curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -sudo apt -y install nodejs  设置jenkins令牌（https://blog.csdn.net/weixin_44931933/article/details/127704724） 新建项目：web hooks配置 配置maven  screen的使用参考文章：https://blog.csdn.net/qq_34131701/article/details/124353270...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC82MDk4NC8zNzQ1NA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">www</div><div class="author-info-description">准备整活这个网站，近期将更新秋招面试相关内容～</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangwangwang23333"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">个人博客，已上线秋招相关内容</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/o4IANoiAuCvAHg9X2hQAFFEAmeDgNpAqhfoaZC~tplv-dy-aweme-images:q75-20251101-180224.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-小米"/></a><div class="content"><a class="title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米">秋招面试-小米</a><time datetime="2025-11-01T10:00:00.000Z" title="发表于 2025-11-01 18:00:00">2025-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/26c9324913c021677768-20251101-180143.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-虾皮"/></a><div class="content"><a class="title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮">秋招面试-虾皮</a><time datetime="2025-11-01T09:57:00.000Z" title="发表于 2025-11-01 17:57:00">2025-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招知识储备"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备">秋招知识储备</a><time datetime="2025-10-31T15:50:00.000Z" title="发表于 2025-10-31 23:50:00">2025-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-字节面试"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试">暑期实习-字节面试</a><time datetime="2025-10-30T16:12:00.000Z" title="发表于 2025-10-31 00:12:00">2025-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/u=4081467303,2852188992&amp;fm=253&amp;app=138&amp;f=JPEG-20251031-102218.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-笔试记录"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录">暑期实习-笔试记录</a><time datetime="2025-10-30T16:10:00.000Z" title="发表于 2025-10-31 00:10:00">2025-10-31</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By www</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 5.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const loadLivere = (el, path) => {
+    window.livereOptions = {
+      refer: path || location.pathname
+    }
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyLivere = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    if (typeof LivereTower === 'object') window.LivereTower.init()
+    else {
+      (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    }
+  }
+
+  if (isShuoshuo) {
+    'Livere' === 'Livere'
+      ? window.shuoshuoComment = { loadComment: loadLivere }
+      : window.loadOtherComment = loadLivere
+    return
+  }
+
+  if ('Livere' === 'Livere' || !false) {
+    if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+    else loadLivere()
+  } else {
+    window.loadOtherComment = loadLivere
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>欢迎来到汪汪汪的网站 - 正在更新中</title><meta name="author" content="www"><meta name="copyright" content="www"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="准备整活这个网站，近期将更新秋招面试相关内容～">
+<meta property="og:type" content="website">
+<meta property="og:title" content="欢迎来到汪汪汪的网站">
+<meta property="og:url" content="http://wangwangwang.website/">
+<meta property="og:site_name" content="欢迎来到汪汪汪的网站">
+<meta property="og:description" content="准备整活这个网站，近期将更新秋招面试相关内容～">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg">
+<meta property="article:author" content="www">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "欢迎来到汪汪汪的网站",
+  "alternateName": [
+    "正在更新中",
+    "wangwangwang.website"
+  ],
+  "url": "http://wangwangwang.website/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangwangwang.website/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '欢迎来到汪汪汪的网站',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 5.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/(https:/upic-1301780692.cos.ap-shanghai.myqcloud.com/2b1df7d30d020dd159551c1f87305b44-20251101-180600.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">欢迎来到汪汪汪的网站</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">欢迎来到汪汪汪的网站</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/o4IANoiAuCvAHg9X2hQAFFEAmeDgNpAqhfoaZC~tplv-dy-aweme-images:q75-20251101-180224.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-小米"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米">秋招面试-小米</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-11-01T10:00:00.000Z" title="发表于 2025-11-01 18:00:00">2025-11-01</time></span></div><div class="content">秋招面试-小米小米一面（8.27 45min）  自我介绍 JVM内存模型 哪些内存结构会发生OOM 发生OOM如何排查 有哪些垃圾回收算法 G1垃圾回收器相比于CMS最大的优势是什么 有阅读过G1垃圾回收器的源码吗 ArrayList和LinkedList的区别 线程池的参数有哪些 ThreadLocal是什么 Springboot和Spring的区别 Springboot如何做到自动装配 http请求的过程 介绍网络拥塞 rpc和http的区别 实习项目介绍 实习项目引申：如果分布式锁过期了，该如何处理 日常如何学习 （算法，手动输入输出）第K大的元素  小米二面（8.28 35min）  自我介绍 家乡 实习项目介绍 + challenge一些细节 文件系统和数据库的区别 SQL的全称 介绍Zookeeper的备份机制 CAP理论 Zookeeper是CP还是AP Zookeeper的CP产生的问题如何解决 （算法）第K大的元素 + 1000瓶水用小鼠找毒药  </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/26c9324913c021677768-20251101-180143.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-虾皮"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮">秋招面试-虾皮</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-11-01T09:57:00.000Z" title="发表于 2025-11-01 17:57:00">2025-11-01</time></span></div><div class="content">秋招面试-虾皮虾皮一面（8.5，50min） 自我介绍+项目（约20分钟） 自我介绍 腾讯实习介绍+面试官challenge细节 蔚来实习介绍 实验室项目介绍+面试官challenge细节 算法算法题（把树上每一层的节点全部往左移动，右边剩下的的位置设置为空） 纯代码编辑器，但是跟面试官说只写核心算法。因为没跑，所以最开始忘记把每一层后面的节点都置为null了 八股部分死锁 如何解决死锁 进程间的通信方式 用过哪些linux命令 mysql为什么用B+树，而非B树和二叉树 跳表为什么不行 mysql如何查询优化 select b from tab where a =xxx 为什么没走(a,b)索引 TCP三次握手和四次挥手 反问 虾皮二面（8.8）  业务介绍 自我介绍 腾讯实习项目介绍，以及面试官的一些challenge volatile如何实现可见性？每次都必须要从主存中拿数据吗？ 二维数组按行访问和按列访问的时间分别是多少？ index(a, b, c) select * from t where b = 1 and a = 2 order by c; 走了索引的哪些字段？...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招知识储备"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备">秋招知识储备</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-31T15:50:00.000Z" title="发表于 2025-10-31 23:50:00">2025-10-31</time></span></div><div class="content">写在前面 暑期实习和秋招的知识储备，除了看JavaGuide等外，可以随时回来查缺补漏个人觉得简历最为重要，因为在面试中会被问到的问题基本都是围绕着自己简历展开的关注自己的简历都不用太去看面经了（看些通用的就行），应该关注自己的简历会被如何拷打   面试的时候表现的积极点、聪明点，很多时候面试问的问题未必回答的出来，但要表现出有一种愿意主动思考的态度。很多时候一个优秀的面试官是会主动引导的，这里举个自己某次面试时遇到的例子。面试官：端口是哪一层协议的？我：我确实不太清楚，让我思考一下…我猜测可能是网络层或者传输层？面试官：TCP和UDP连接可以用同一个端口吗？这里其实就是暗示了，我知道TCP和UDP可以用同一个端口，这就说明了它们的端口不是一个概念，且已知tcp和udp是传输层的协议，所以端口也应该是传输层的概念。因此在面试的时候遇到不会的问题不必太担忧，大胆说出自己的思考，结合学过的知识去分析一下，其实也是很不错的能力。   针对HR面和技术面准备不同的自我介绍。比如我在技术面的时候一般就会说：做了blabla什么项目，最后一带而过自己还参加过暑期支教活动和研究生班长；而HR面...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-字节面试"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试">暑期实习-字节面试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-30T16:12:00.000Z" title="发表于 2025-10-31 00:12:00">2025-10-31</time></span></div><div class="content">暑期实习-字节面试 节子暑期实习面试了两次，基本都挂掉了原因是因为面的太早了（1月份），准备还不是很充分。建议大家面试前一定要好好修改自己的简历，至少对简历上相关问题聊熟于心  字节第一次面试 项目中的分库分表？（不对，需要纠正） sa-token中，token存的是什么，如何根据token找到是谁的（回答的不好） 项目中的redisson如何做到的过期检测（回答的不好）  https://javaguide.cn/database/redis/redis-delayed-task.html#redisson-%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E5%8A%BF  redisson过期订单的key-value存的是什么（回答的不好） 对称加密和非对称加密 分布式锁（用redis）；但是超时或者崩溃了，如何处理；如果超时释放了之后别人去用了，但是自己又去把别人在用的锁释放了怎么办（场...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/u=4081467303,2852188992&amp;fm=253&amp;app=138&amp;f=JPEG-20251031-102218.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-笔试记录"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录">暑期实习-笔试记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-30T16:10:00.000Z" title="发表于 2025-10-31 00:10:00">2025-10-31</time></span></div><div class="content">暑期实习-笔试记录快速读取 理论上下面这段代码要能够默写出来，算法考试的时候直接用下面的就行了  12345678910111213141516171819202122232425import java.io.*;import java.util.*;public class Main &#123;    static BufferedReader br;    static StringTokenizer st;      static String next() throws IOException &#123;        while (!st.hasMoreTokens()) &#123;            st = new StringTokenizer(br.readLine());        &#125;        return st.nextToken();    &#125;    public static void main(String[] args) throws IOException &#123;        br = new Buf...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E8%9A%82%E8%9A%81%E9%9D%A2%E8%AF%95/" title="暑期实习-蚂蚁面试"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/u=2193217229,3865826716&amp;fm=253&amp;app=138&amp;f=JPEG-20251031-101944.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-蚂蚁面试"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E8%9A%82%E8%9A%81%E9%9D%A2%E8%AF%95/" title="暑期实习-蚂蚁面试">暑期实习-蚂蚁面试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-30T16:07:00.000Z" title="发表于 2025-10-31 00:07:00">2025-10-31</time></span></div><div class="content">暑期实习-蚂蚁面试笔试（TCP报文数据总量）数据包1400字节，tcp头部20字节，应用层数据大小为1360字节，发送100个数据包，那么传输的字节数是多少？  传输的总字节数为 140,000 字节（140 KB）  umask为022，在创建文件的时候的权限是？  当 umask 设置为 022 时，新创建文件的权限为 **rw-r–r–**（即权限码 644）  umask 作用： umask 通过屏蔽（禁用）权限位来限制默认权限。计算方式为： 实际权限=默认权限 &amp;  umask实际权限=默认权限&amp; umask  文件基础权限：666（rw-rw-rw-），即所有用户可读可写，但不可执行（Linux默认不给文件执行权限）。目录基础权限：777（rwxrwxrwx），即所有用户可读、写、执行。umask作用：通过按位取反后与基础权限进行逻辑与操作，屏蔽不需要的权限。  （结构型设计模式）责任链模式属于什么类型的设计模式？  属于 行为型设计模式，其核心目标是解耦请求的发送者与接收者，通过构建链式结构让多个对象依次处理同一请求，直到有对象处理成功或传递至链尾 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%BE%8E%E5%9B%A2%E9%9D%A2%E8%AF%95/" title="暑期实习-美团面试"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/u=3581427709,860796011&amp;fm=253&amp;app=138&amp;f=JPEG-20251031-101635.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-美团面试"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%BE%8E%E5%9B%A2%E9%9D%A2%E8%AF%95/" title="暑期实习-美团面试">暑期实习-美团面试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-30T16:06:00.000Z" title="发表于 2025-10-31 00:06:00">2025-10-31</time></span></div><div class="content">暑期实习-美团面试笔试3.22，ac了2.2 最后一题需要查看一下思路 美团AI面 TCP和UDP的区别，适用于什么场景 Java的内部类是什么？介绍一下匿名内部类 垃圾回收是什么？如何触发垃圾回收 介绍聚簇索引和非聚簇索引 介绍5种Java集合，以及特点 如何保证商品不出现超卖 介绍如何去学习的 介绍解决某个问题是否需要投入大量时间，从哪些方面考虑 未来三年的职业规划  美团一面（3.27，47min）  自我介绍 最能体现技术能力的项目介绍 如何设计实现一个定时任务执行器 如果不希望cpu空转，如何设计一个定时任务执行器 实习项目用到了Spring Task定时任务，说一说 介绍令牌桶算法 哪些地方应用到了惰性机制 介绍项目中提到的冗余表和索引 是否遇到过索引失效 数据区分度足够高，如何建立索引：select * from table where x = 1 and y &lt; 1 order by z; 是否存在查询同时使用两个索引的情况； 算法：K个一组反转链表  12345678910111213141516171819202122232425262728293031...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E6%90%BA%E7%A8%8B%E9%9D%A2%E8%AF%95/" title="暑期实习-携程面试"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/u=2144682419,933249763&amp;fm=253&amp;app=138&amp;f=JPEG-20251031-101400.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-携程面试"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E6%90%BA%E7%A8%8B%E9%9D%A2%E8%AF%95/" title="暑期实习-携程面试">暑期实习-携程面试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-30T16:05:00.000Z" title="发表于 2025-10-31 00:05:00">2025-10-31</time></span></div><div class="content">暑期实习-携程面试笔试（3.13 19:00-21:00） 秒了，1h结束 携程一面（3.21，60min）  自我介绍 项目介绍及讨论 实时协同编程中，如果两端同时去做变更操作，如何保证一致性（a站点的a操作作用到b站点，b站点的b操作还没作用到a站点，此时a站点又做了操作？） 如果想要实现房东查看员工数据，如何实现 如果系统想要实现角色的动态权限变更，如何实现 某一个微服务在请求其他微服务的时候，一定需要经过gateway再次鉴权吗，有什么优化方案吗 如何实现用户名带着密码登陆失败三次后，15分钟内不能登陆 50个库存的秒杀如何防止出现超卖 redisson的自动续期机制是如何实现的 redis如何解决缓存一致性 redis的热点key的危害和解决方法 cookie跨域吗 百度登录之后，百度网盘也自动登录上了，怎么实现的 localStorage跨域吗（不会） 10G的11位电话号码文件，2G内存，如何获取重复率最高的电话号码  携程二面（3.28，36min，面试官迟到30min，逆天）  自我介绍 ot算法相关讨论 抽象语法树相关讨论 介绍数据库中的索引 建立联合索引(a...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E8%85%BE%E8%AE%AF%E9%9F%B3%E4%B9%90%E9%9D%A2%E8%AF%95/" title="暑期实习-腾讯音乐面试"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/41defd59228f8a2b5874b5a9234abf98-20251031-100150.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-腾讯音乐面试"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E8%85%BE%E8%AE%AF%E9%9F%B3%E4%B9%90%E9%9D%A2%E8%AF%95/" title="暑期实习-腾讯音乐面试">暑期实习-腾讯音乐面试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-30T16:04:00.000Z" title="发表于 2025-10-31 00:04:00">2025-10-31</time></span></div><div class="content">暑期实习-腾讯音乐面试腾讯音乐一面（3.19，50分钟）  为什么来深圳 自我介绍 实习经历介绍 为什么选用Spring Task 线程池的参数有哪些 线程池的核心线程数如何选择 mysql的索引机制 有联合索引(a,b)，但是走了索引b，可能因为什么原因 如何强制走某一个索引 mysql如何去做查询优化 用过redis的什么数据类型或者是否了解数据类型 redis的持久化机制 令牌桶算法 还知道哪些其他的限流算法 如何去实现一个高可用、高性能的系统 Spring Bean对象的生命周期，以A a = new A()；为例 Spring如何解决循环依赖 项目中实时协同编程AST如何衡量代码是否重要 共享屏幕场景题1：写一个单例模式，以及是否有其他实现方式（我写了惰性加载、直接加载和Enum的方式） 场景题2：三个线程循环打印ABC  1234567891011121314151617181920212223242526272829303132333435363738394041public static void main(String[] args) &#123;    Sem...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E4%BA%AC%E4%B8%9C%E9%9D%A2%E8%AF%95/" title="暑期实习-京东面试"><img class="post-bg" src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031095639754-20251031-095639.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-京东面试"></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E4%BA%AC%E4%B8%9C%E9%9D%A2%E8%AF%95/" title="暑期实习-京东面试">暑期实习-京东面试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-30T16:02:00.000Z" title="发表于 2025-10-31 00:02:00">2025-10-31</time></span></div><div class="content">暑期实习-京东面试京东一面（3.18，53分钟）  自我介绍 实习经历介绍 算法题（口述思路）：寻找第K大的数 介绍Java中的JVM 介绍Spring框架中的AOP 介绍mysql的索引 介绍分库分表 介绍分布式事务（不太了解） 介绍事务的四大特性 为什么普遍用redis以及五种基本数据类型 学习能力如何，佐证 职业发展规划 如何看待北京和京东 为啥18年入学（不要介意） 反问（业务：京东科技板块，京东金融APP大后端）  面试官：非常满意，不比复旦华东五校的差 这是提前准秋招，如果三轮面试都通过建议提前来实习（4月初入职，7月前满3个月） 京东二面（3.21，17分钟，HR面？）  自我介绍 梦想教室是什么 高中三年感受如何，压力大吗 个人缺点 最有成就感的一件事：中间遇到什么问题，最后如何解决的，个人什么能力发挥了作用 解决问题会个人解决还是寻求他人帮助，比例100各自是多少 如果只有一个offer，为什么会给到我 未来职业发展规划 对上一轮面试官有什么感受 什么时候入职 现在有什么offer （反问）3天脱产培训，第四天返岗（mentor+leader）；90天后3次转正...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">www</div><div class="author-info-description">准备整活这个网站，近期将更新秋招面试相关内容～</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangwangwang23333"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">个人博客，已上线秋招相关内容</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/o4IANoiAuCvAHg9X2hQAFFEAmeDgNpAqhfoaZC~tplv-dy-aweme-images:q75-20251101-180224.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-小米"/></a><div class="content"><a class="title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米">秋招面试-小米</a><time datetime="2025-11-01T10:00:00.000Z" title="发表于 2025-11-01 18:00:00">2025-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/26c9324913c021677768-20251101-180143.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-虾皮"/></a><div class="content"><a class="title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮">秋招面试-虾皮</a><time datetime="2025-11-01T09:57:00.000Z" title="发表于 2025-11-01 17:57:00">2025-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招知识储备"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备">秋招知识储备</a><time datetime="2025-10-31T15:50:00.000Z" title="发表于 2025-10-31 23:50:00">2025-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-字节面试"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试">暑期实习-字节面试</a><time datetime="2025-10-30T16:12:00.000Z" title="发表于 2025-10-31 00:12:00">2025-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/u=4081467303,2852188992&amp;fm=253&amp;app=138&amp;f=JPEG-20251031-102218.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-笔试记录"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录">暑期实习-笔试记录</a><time datetime="2025-10-30T16:10:00.000Z" title="发表于 2025-10-31 00:10:00">2025-10-31</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">暑期实习</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 1.3em; color: #99a1ac">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.1em; color: #999">技术</a> <a href="/tags/%E7%94%9F%E6%97%A5/" style="font-size: 1.1em; color: #999">生日</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">11</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/10/">
+            <span class="card-archive-list-date">
+              十月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/07/">
+            <span class="card-archive-list-date">
+              七月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/01/">
+            <span class="card-archive-list-date">
+              一月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/12/">
+            <span class="card-archive-list-date">
+              十二月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/04/">
+            <span class="card-archive-list-date">
+              四月 2023
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">35</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-11-01T10:19:01.820Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By www</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 5.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

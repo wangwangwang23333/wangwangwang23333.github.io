@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>欢迎来到汪汪汪的网站 - 正在更新中</title><meta name="author" content="www"><meta name="copyright" content="www"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="准备整活这个网站，近期将更新秋招面试相关内容～">
+<meta property="og:type" content="website">
+<meta property="og:title" content="欢迎来到汪汪汪的网站">
+<meta property="og:url" content="http://wangwangwang.website/page/3/">
+<meta property="og:site_name" content="欢迎来到汪汪汪的网站">
+<meta property="og:description" content="准备整活这个网站，近期将更新秋招面试相关内容～">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg">
+<meta property="article:author" content="www">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangwangwang.website/page/3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '欢迎来到汪汪汪的网站',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 5.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/(https:/upic-1301780692.cos.ap-shanghai.myqcloud.com/2b1df7d30d020dd159551c1f87305b44-20251101-180600.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">欢迎来到汪汪汪的网站</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">欢迎来到汪汪汪的网站</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/25/React-native%E5%BC%80%E5%8F%91/" title="React native开发">React native开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-25T13:19:03.000Z" title="发表于 2023-04-25 21:19:03">2023-04-25</time></span></div><div class="content">配置android环境 12345export ANDROID_HOME=$HOME/Library/Android/sdkexport PATH=$PATH:$ANDROID_HOME/emulatorexport PATH=$PATH:$ANDROID_HOME/toolsexport PATH=$PATH:$ANDROID_HOME/tools/binexport PATH=$PATH:$ANDROID_HOME/platform-tools  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/25/ElementUI2-%E5%BC%80%E5%8F%91/" title="ElementUI2 开发">ElementUI2 开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-25T04:06:16.000Z" title="发表于 2023-04-25 12:06:16">2023-04-25</time></span></div><div class="content">需要python2环境 https://www.wyr.me/post/658 12345brew install pyenvpyenv install 2.7.18export PATH&#x3D;&quot;$(pyenv root)&#x2F;shims:$&#123;PATH&#125;&quot;pyenv global 2.7.18python --version   需要注意node-sass版本的对应关系 如，默认的node-sass是4.11.0，而这个版本对node有要求：    OS Architecture Node    Windows x86 &amp; x64 0.10, 0.12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11   OSX x64 0.10, 0.12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11   Linux* x86 &amp; x64 0.10, 0.12, 1, 2, 3, 4, 5, 6, 7, 8**, 9**, 10^, 11   Alpine Linux x64 6, ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/24/Ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="Ubuntu系统中的常用操作">Ubuntu系统中的常用操作</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-24T12:37:11.000Z" title="发表于 2023-04-24 20:37:11">2023-04-24</time></span></div><div class="content">jenkins的配置安装jenkins： https://blog.csdn.net/wf908164152/article/details/125716221 1sudo apt-get install maven 设置权限： 1vim /etc/default/jenkins  12# 把jenkins目录文件交给ubuntu用户chown -R ubuntu:ubuntu /var/lib/jenkins 安装gitee、maven、nodejs插件 12curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -sudo apt -y install nodejs  设置jenkins令牌（https://blog.csdn.net/weixin_44931933/article/details/127704724） 新建项目：web hooks配置 配置maven  screen的使用参考文章：https://blog.csdn.net/qq_34131701/article/details/124353270...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/" title="JS——原型链"><img class="post-bg" src="https://wwwtypora.oss-cn-shanghai.aliyuncs.com/image-20220403162850136.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS——原型链"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/04/03/JS-%E5%8E%9F%E5%9E%8B%E9%93%BE/" title="JS——原型链">JS——原型链</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-04-03T10:00:00.000Z" title="发表于 2022-04-03 18:00:00">2022-04-03</time></span></div><div class="content">前言在学习JS中的原型，原型链，继承这些知识之前，我们先学习下基础知识：函数和对象的关系。 我们一直都知道，函数也是对象的一种，因为通过instanceof就可以判断出来。但是函数和对象的关系并不是简单的包含和被包含的关系，这两者之间的关系还是有点复杂的。接下来我们就来捋一捋。 首先，阐述一点，对象都是通过函数创建的。对于下面这种类型的代码，一般叫做“语法糖”： 12var obj = &#123;a:10,b:20&#125;;var arr = [5, &#x27;x&#x27;, true]; 但是，其实上面这段代码的实质是下面这样的： 12345678var obj = new Object();obj.a = 10;obj.b = 20;var arr = new Array();arr[0] = 5;arr[1] = &#x27;x&#x27;;arr[2] = true; 而Object和Array都是函数，可以自己用typeof函数进行验证。 所以，可以得出：对象都是通过函数创建的。 那么下面就进入正题。 原型prototype在前言中，我们说了函数也是一种对象，...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/31/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/" title="单调栈的应用"><img class="post-bg" src="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="单调栈的应用"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/31/%E5%8D%95%E8%B0%83%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8/" title="单调栈的应用">单调栈的应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-31T12:00:00.000Z" title="发表于 2022-03-31 20:00:00">2022-03-31</time></span></div><div class="content">84 柱状图中最大的矩形 题目链接：https://leetcode-cn.com/problems/largest-rectangle-in-histogram/ 给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。 求在该柱状图中，能够勾勒出来的矩形的最大面积。    思考我们可以反过来考虑针对于每一个元素，都可以求出以它为高的最大矩形面积。 那么这样一个矩形，它的底应该是多少呢？ 自然而然，我们可以发现：这一个矩形的左侧就是左边比它小的元素的位置，右侧自然也是比它小的元素的位置。 以下图的元素5为例，它的最左侧就应该是比它小的元素1的右边，它的最右侧就应该是比它小的元素2的左边。  因此，问题就转化成了：针对于每一个元素，我们都需要求出左边比它小的元素的位置以及右边比它小的元素的位置。 单调栈那么在从左往右遍历一遍的过程中，如何找出比它小的元素呢？ 我们自然而然的想到了单调递增栈（严格单调递增）：每当一个元素到达时候，不断出栈直到栈为空或者栈顶元素小于该元素，那么这个元素就一定是比它小的最近的元素。 代码12345678910111213...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/29/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git基本操作整理"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/hututu-tech/IMG-gongfeng@main/2022/03/29/62425f9be0486.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git基本操作整理"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/29/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git基本操作整理">Git基本操作整理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-29T04:00:00.000Z" title="发表于 2022-03-29 12:00:00">2022-03-29</time></span></div><div class="content">Git 基本操作整理前言本文档通过整理CS-Notes中的Git命令操作与实战Learn Git Branching来学习掌握Git方法。因为文档主要分为两部分，第一部分参考CS-Notes并查阅资料为Git理论知识，第二部分为实战Learn Git Branching给出个人思考与过程。 参考资料来源:  CS-Notes Git部分  Learn Git Branching   Git知识Learn Git BranchingLevel 1. Git基础内容Git CommitGit 仓库中的提交记录保存的是你的目录下所有文件的快照，就像是把整个目录复制，然后再粘贴一样，但比复制粘贴优雅许多！ Git 希望提交记录尽可能地轻量，因此在你每次进行提交时，它并不会盲目地复制整个目录。条件允许的情况下，它会将当前版本与仓库中的上一个版本进行对比，并把所有的差异打包到一起作为一个提交记录。Git 还保存了提交的历史记录。这也是为什么大多数提交记录的上面都有父节点的原因。对于项目组的成员来说，维护提交历史对大家都有好处。 Git Commit 就是在父节点下进行一次内容的提交。使用的命...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/03/19/%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" title="前端--节流与防抖">前端--节流与防抖</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-18T16:00:00.000Z" title="发表于 2022-03-19 00:00:00">2022-03-19</time></span></div><div class="content">节流与防抖是前端中比较重要的两个概念。 函数防抖当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时。 如下图，持续触发scroll事件时，并不执行handle函数，当1000毫秒内没有触发scroll事件时，才会延时触发scroll事件。   下面的代码可以实现防抖的功能： 123456789101112131415161718192021222324252627282930&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;title&gt;Title&lt;/title&gt;    &lt;style&gt;        body&#123;            height: 5000px;        &#125;    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;    &lt...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题"><img class="post-bg" src="https://s3.ax1x.com/2020/12/31/rvEA3T.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="leetcode-数组题"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/26/leetcode%E5%88%B7%E9%A2%98/" title="leetcode-数组题">leetcode-数组题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-25T16:00:00.000Z" title="发表于 2021-01-26 00:00:00">2021-01-26</time></span></div><div class="content">4 寻找两个正序数组的中位数1.遍历数组，使用类似于归并排序的两个指针一一比较大小 时间复杂度：O(N) 空间复杂度：O(1) 执行用时：48 ms, 在所有 C++ 提交中击败了83.73%的用户 内存消耗：86.9 MB, 在所有 C++ 提交中击败了95.52%的用户 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;	//O(N)	int i = -1, j = -1;	int size1 = nums1.size(), size2 = nums2.size();	if ((size1 + size2) % 2 == 0)	&#123;		//even		int a;		...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/01/11/%E4%BA%94%E5%AD%90%E6%A3%8B%E8%81%94%E6%9C%BA%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D/" title="游戏 | 联机版五子棋 v0.1"><img class="post-bg" src="https://s3.ax1x.com/2021/01/11/s8aeKJ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="游戏 | 联机版五子棋 v0.1"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/11/%E4%BA%94%E5%AD%90%E6%A3%8B%E8%81%94%E6%9C%BA%E6%B8%B8%E6%88%8F%E4%BB%8B%E7%BB%8D/" title="游戏 | 联机版五子棋 v0.1">游戏 | 联机版五子棋 v0.1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-11T04:00:00.000Z" title="发表于 2021-01-11 12:00:00">2021-01-11</time></span></div><div class="content">项目简介版本：0.1 项目地址：https://github.com/wangwangwang23333/Five-Son-s-Chess-Online 介绍： 一个可以支持联机进行五子棋的游戏 目前支持功能：等待其他玩家加入、查看上一步下棋位置 未来预期加入功能：悔棋、聊天、选择黑白方、积分功能 代码环境编译器：vscode 语言：python 版本：3.7+ 库：pygame、socket等 项目方法1.将server.py中ip地址更改为服务器的私网ip 2.将playchess.py中ip地址更改为服务器的公网ip 3.打开服务器 4.两端即可同时开始游戏 注：可以通过Pyinstall库部署为.exe文件 项目截图开始游戏界面：  等待其他玩家加入界面：  游戏界面：  </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/01/11/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%A4%8D%E4%B9%A0/" title="离散数学复习"><img class="post-bg" src="https://s3.ax1x.com/2021/01/11/s8GD8H.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离散数学复习"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/11/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%A4%8D%E4%B9%A0/" title="离散数学复习">离散数学复习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-11T04:00:00.000Z" title="发表于 2021-01-11 12:00:00">2021-01-11</time></span></div><div class="content">第一章 集合比较简单，就是高中知识 第二章 命题逻辑 命题判断：  下列句子中那些是命题？(1) 北京是中华人民共和国的首都.(2)  2 + 5 ＝8.(3)  x + 5 ＞ 3.(4)  你会开车吗？(5) 2050年元旦北京是晴天.(6) 这只兔子跑得真快呀！(7) 请关上门！(8) 我正在说谎话. (1),(2),(5)是命题, (3),(4),(6)~(8)都不是命题    永真式、永假式  等值式：      范式：析取是V，合取是∩  p,q形成的极小项和极大项：  极小项：    公式 成真赋值 名称    非p且非q 0 0 m0   非p且q 0 1 m1   p且非q 1 0 m2   p且q 1 1 m3    极大项：    公式 成假赋值 名称    p或q 0 0 M0   p或非q 0 1 M1   非p或q 1 0 M2   非p或非q 1 1 M3     【题】    第三章 一阶逻辑1.约束出现和自由出现的概念 2.前束范式：一个量词非否定出现在全式的开头，并且作用域延伸到公式末尾 第四章 关系1.自反性、对称性、传递性（充要条件：RoR...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/b_9f4ad355e9ba38c97a6a95aeeef1eef3-20251031-111042.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">www</div><div class="author-info-description">准备整活这个网站，近期将更新秋招面试相关内容～</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangwangwang23333"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">个人博客，已上线秋招相关内容</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/o4IANoiAuCvAHg9X2hQAFFEAmeDgNpAqhfoaZC~tplv-dy-aweme-images:q75-20251101-180224.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-小米"/></a><div class="content"><a class="title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E5%B0%8F%E7%B1%B3/" title="秋招面试-小米">秋招面试-小米</a><time datetime="2025-11-01T10:00:00.000Z" title="发表于 2025-11-01 18:00:00">2025-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/26c9324913c021677768-20251101-180143.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招面试-虾皮"/></a><div class="content"><a class="title" href="/2025/11/01/2025/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95-%E8%99%BE%E7%9A%AE/" title="秋招面试-虾皮">秋招面试-虾皮</a><time datetime="2025-11-01T09:57:00.000Z" title="发表于 2025-11-01 17:57:00">2025-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秋招知识储备"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E9%9D%A2%E8%AF%95-%E7%9F%A5%E8%AF%86%E5%82%A8%E5%A4%87/" title="秋招知识储备">秋招知识储备</a><time datetime="2025-10-31T15:50:00.000Z" title="发表于 2025-10-31 23:50:00">2025-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/image-20251031102636698-20251031-102637.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-字节面试"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95/" title="暑期实习-字节面试">暑期实习-字节面试</a><time datetime="2025-10-30T16:12:00.000Z" title="发表于 2025-10-31 00:12:00">2025-10-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录"><img src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/u=4081467303,2852188992&amp;fm=253&amp;app=138&amp;f=JPEG-20251031-102218.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="暑期实习-笔试记录"/></a><div class="content"><a class="title" href="/2025/10/31/2025/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" title="暑期实习-笔试记录">暑期实习-笔试记录</a><time datetime="2025-10-30T16:10:00.000Z" title="发表于 2025-10-31 00:10:00">2025-10-31</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">暑期实习</a> <a href="/tags/%E7%A7%8B%E6%8B%9B/" style="font-size: 1.3em; color: #99a1ac">秋招</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.1em; color: #999">技术</a> <a href="/tags/%E7%94%9F%E6%97%A5/" style="font-size: 1.1em; color: #999">生日</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">11</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/10/">
+            <span class="card-archive-list-date">
+              十月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/07/">
+            <span class="card-archive-list-date">
+              七月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/01/">
+            <span class="card-archive-list-date">
+              一月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/12/">
+            <span class="card-archive-list-date">
+              十二月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/04/">
+            <span class="card-archive-list-date">
+              四月 2023
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">35</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-11-01T10:19:01.820Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By www</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 5.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
